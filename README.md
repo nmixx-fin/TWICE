@@ -1,4 +1,4 @@
-# [TWICE: What Advantages Can Low-Resource Domain-Specific Embedding Model Bring? - A Case Study on Korea Financial Texts](https://arxiv.org/abs/2502.07131)
+# TWICE: What Advantages Can Low-Resource Domain-Specific Embedding Model Bring? - A Case Study on Korea Financial Texts
 
 <p align="center">
     <a href="https://arxiv.org/abs/2502.07131">
