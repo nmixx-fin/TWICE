@@ -1,0 +1,1 @@
+python eval_KorFinMTEB.py --model_name_or_path text-embedding-3-small --task_type CLUSTERING
