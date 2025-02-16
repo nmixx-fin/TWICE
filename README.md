@@ -5,7 +5,7 @@
         <img alt="Paper" src="https://img.shields.io/badge/arXiv-2502.07131-b31b1b.svg">
     </a>
     <a href="https://huggingface.co/nmixx-fin">
-        <img alt="Huggingface" src="https://img.shields.io/badge/huggingface-repository-ffd700.svg">
+        <img alt="Huggingface" src="https://img.shields.io/badge/huggingface-nmixx_fin-ffd700.svg">
     </a>
 </p>
 
