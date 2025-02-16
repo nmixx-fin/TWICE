@@ -1,12 +1,11 @@
-# TWICE: What Advantages Can Low-Resource Domain-Specific Embedding Model Bring? - A Case Study on Korea Financial Texts
+# [TWICE: What Advantages Can Low-Resource Domain-Specific Embedding Model Bring? - A Case Study on Korea Financial Texts](https://arxiv.org/abs/2502.07131)
 
 <p align="center">
     <a href="https://arxiv.org/abs/2502.07131">
         <img alt="Paper" src="https://img.shields.io/badge/arXiv-2502.07131-b31b1b.svg">
     </a>
     <a href="https://huggingface.co/nmixx-fin">
-        <img alt="Huggingface" src="https://img.shields.io/badge/huggingface-repository-ffd700.svg
-        ">
+        <img alt="Huggingface" src="https://img.shields.io/badge/huggingface-repository-ffd700.svg">
     </a>
 </p>
 
@@ -28,6 +27,8 @@ Domain specificity of embedding models is critical for effective performance. Ho
 The basic pipeline is built upon [FinMTEB](https://github.com/yixuantt/finmteb), [MTEB](https://github.com/embeddings-benchmark/mteb)
 
 
+
+
 ## Installation
 
 ```bash
@@ -36,6 +37,8 @@ git clone https://github.com/nmixx-fin/TWICE.git
 cd TWICE
 pip install -r requirements.txt
 ```
+
+
 
 ## Example Usage
 
@@ -52,6 +55,8 @@ python eval_KorFinMTEB.py --model_name_or_path KURE --task_type CLUSTERING
 ```bash
 sh run.sh
 ```
+
+
 
 
 ## Arguments
@@ -76,6 +81,8 @@ Arguments:
         --pooling_method (str, default='cls'):
             Defines the pooling method for the model. Different models may require different pooling methods.
 ```
+
+
 
 ## Tasks
 - For comparison with **FinMTEB**, only the **datasets that directly correspond to FinMTEB (1:1 mapping)** will be evaluated first.  
