@@ -2,75 +2,43 @@
 
 # The Korean translation of the original instruction
 kor_task2instruction = {
-    "FinancialPhraseBankClassification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
-    "FinSentClassification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
-    "FiQAClassification": "측면 기반 금융 감성 분류를 수행합니다.",
-    "SemEva2017Classification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
-    "FLSClassification": "문장을 'not-fls', 'specific fls', 'non-specific fls' 클래스 중 하나로 분류합니다.",
-    "ESGClassification": "주어진 문장을 '환경', '사회', '거버넌스', '비-ESG' 클래스 중 하나로 분류합니다.",
-    "FOMCClassification": "FOMC에서 제공된 문장을 '매파적', '비둘기파적', '중립' 클래스 중 하나로 분류합니다.",
-    "FinancialFraudClassification": "주어진 텍스트에서 금융 사기를 탐지합니다.",
-    "FinNSPClassification": "금융 감성 분류를 수행합니다.",
-    "FinChinaSentimentClassification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
-    "FinFEClassification": "주어진 금융 소셜 미디어 텍스트의 감성을 분류합니다.",
-    "OpenFinDataSentimentClassification": "주어진 금융 텍스트의 감성을 분류합니다.",
-    "Weibo21Classification": "주어진 텍스트에서 가짜 뉴스를 분류합니다.",
+    # Classification
+    "KorFinSentClassification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
+    "KorESGClassification": "주어진 금융 텍스트를 'E', 'S', 'G', 'Non-ESG' 클래스 중 하나로 분류합니다.",
+    "KorFOMCClassification": "FOMC에서 제공된 금융 텍스트를  'Hawkish', 'Dovish', 'Neutral' 클래스 중 하나로 분류합니다.",
+    "KorIndustryClassification" : "산업 분석 리포트 내 텍스트를 보고, 어떤 산업군에 대한 서술인지 ['건설', '반도체', '석유화학', '유통', '은행', '음식료', '자동차', '조선', '철강금속', '통신'] 클래스 중 하나로 분류합니다."
+    "KorFinascSentClassification" : "금융 분석 보고서 내의 텍스트를 보고, 각 aspect에 따른 src의 감정을 'POSITIVE', 'NEUTRAL', 'NEGATIVE' 클래스 중 하나로 분류합니다.",
+    "KorFinancialMMLUClassification" : "금융 도메인의 질문과 선택지가 주어졌을 때, 제공된 선택지 중 하나의 답변을 반환합니다.",
+    "KorFinancialBQAClassification" : "주어진 금융 도메인 질문에 대해, 해당 텍스트가 올바른지 'Yes', 'No' 중 하나로 분류합니다.",
+    "KorFinancialMCQAClassification" : "금융 도메인의 질문과 선택지가 주어졌을 때, 제공된 선택지 중 하나의 답변을 반환합니다.",
+    "KorNewsBQAClassification" : "주어진 금융 도메인 텍스트에 대해, 해당 텍스트가 올바른지 'Yes', 'No' 중 하나로 분류합니다.",
 
-    "FiQA2018Retrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "FinanceBenchRetrieval": "주어진 금융 질문에 대해 관련된 문맥을 검색합니다.",
-    "HC3Retrieval": "주어진 금융 질문에 대해 관련된 문서를 검색하여 답을 제공합니다.",
-    "Apple10KRetrieval": "주어진 금융 질문에 대해 관련된 문맥을 검색합니다.",
-    "FinQARetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "TATQARetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "USNewsRetrieval": "주어진 금융 질문에 대해 답변에 도움이 될 문서를 검색합니다.",
-    "TradeTheEventEncyclopediaRetrieval": "주어진 금융 용어에 대해 관련 문맥을 검색합니다.",
-    "TradeTheEventNewsRetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "TheGoldmanEnRetrieval": "주어진 금융 용어에 대해 관련 문맥을 검색합니다.",
+    # Retrieval
+    "KorTATQARetrieval": "재무 리포트에서 주어진 금융 텍스트에 대해 가장 적절한 사용자 답변을 검색합니다.",
+    "KorNewsRetrieval": "주어진 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",
+    "KorBoKDictRetrieval": "주어진 금융 용어에 대해 답변에 도움이 될 문서를 검색합니다.",
+    "KorFSSDictRetrieval": "주어진 금융 용어에 대해 답변에 도움이 될 문서를 검색합니다.",
+    "KorMarketReportRetrieval" : "주식 시장과 관련된 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",
 
-    "FinTruthQARetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "FinEvaRetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "AlphaFinRetrieval": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "DISCFinLLMRetrieval": "주어진 금융 질문에 대해 관련 문서를 검색하여 답을 제공합니다.",
-    "DISCFinLLMComputingRetrieval": "주어진 금융 질문에 대해 최적의 답변을 검색합니다.",
-    "DuEEFinRetrieval": "주어진 금융 질문에 대해 답변에 도움이 될 문서를 검색합니다.",
-    "SmoothNLPRetrieval": "주어진 금융 질문에 대해 답변에 도움이 될 문서를 검색합니다.",
-    "THUCNewsRetrieval": "주어진 금융 질문에 대해 답변에 도움이 될 문서를 검색합니다.",
-    "FinEvaEncyclopediaRetrieval": "주어진 금융 용어에 대해 관련 문맥을 검색합니다.",
-    "TheGoldmanZhRetrieval": "주어진 금융 용어에 대해 관련 문맥을 검색합니다.",
+    # Clustering
+    "KorMInDS14EnClustering": "주어진 텍스트의 주요 의도를 분류합니다.",
+    "KorDartCompany2IndustryClustering" : "사업 보고서에 나와있는 기업 설명 텍스트를 기반으로 산업군을 분류합니다."
 
-    "MInDS14EnClustering": "주어진 텍스트의 주요 의도를 분류합니다.",
-    "ComplaintsClustering": "소비자 불만의 주요 유형을 분류합니다.",
-    "PiiClustering": "개인 식별 정보 기반으로 주어진 텍스트를 군집화합니다.",
-    "FinanceArxivS2SClustering": "논문의 제목을 기반으로 금융 논문의 주요 카테고리를 분류합니다.",
-    "FinanceArxivP2PClustering": "논문의 초록을 기반으로 금융 논문의 주요 카테고리를 분류합니다.",
-    "WikiCompany2IndustryClustering": "기업 설명을 기반으로 산업군을 분류합니다.",
+    # Reranking
+    "KorFiQA2018Reranking": "주어진 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",
 
-    "MInDS14ZhClustering": "주어진 텍스트의 주요 의도를 분류합니다.",
-    "FinNLClustering": "주어진 금융 뉴스의 주요 카테고리를 분류합니다.",
-    "CCKS2022Clustering": "주어진 텍스트의 주요 사건을 분류합니다.",
-    "CCKS2020Clustering": "주어진 텍스트의 주요 사건을 분류합니다.",
-    "CCKS2019Clustering": "주어진 텍스트의 주요 사건을 분류합니다.",
+    # STS
+    "KorFinSTS": "금융 텍스트에서 미묘한 의미적 변화를 탐지하여, 문장이 얼마나 유사한지 판단합니다.",
 
-    "FinFactReranking": "주어진 금융 질문에 대해 관련 문서를 검색하여 답을 제공합니다.",
-    "FiQA2018Reranking": "주어진 금융 질문에 대해 답변에 도움이 될 문서를 검색합니다.",
-    "HC3Reranking": "주어진 금융 질문에 대해 관련된 문서를 검색하여 답을 제공합니다.",
-    "FinEvaReranking": "주어진 금융 질문에 대해 가장 적절한 사용자 답변을 검색합니다.",
-    "DISCFinLLMReranking": "주어진 금융 질문에 대해 관련 문맥을 검색합니다.",
+    # PairCLS
+    "KorHeadlineACPairClassification": "주어진 금융 뉴스 헤드라인의 감성을 분류합니다.",
+    "KorContentACPairClassification": "주어진 금융 뉴스 본문의 감성을 분류합니다.",
+    "KorOpnionHeadlineACPairClassification": "주어진 금융 칼럼 헤드라인의 감성을 분류합니다.",
 
-    "FinSTS": "금융 내러티브에서 미묘한 의미적 변화를 탐지합니다.",
-    "FINAL": "의미적으로 유사한 금융 텍스트를 검색합니다.",
-    "AFQMC": "의미적으로 유사한 금융 텍스트를 검색합니다.",
-    "BQCorpus": "의미적으로 유사한 금융 텍스트를 검색합니다.",
-
-    "Ectsum": "주어진 뉴스 텍스트에 대해 의미적으로 유사한 요약을 검색합니다.",
-    "FINDsum": "주어진 금융 문서에 대해 의미적으로 유사한 요약을 검색합니다.",
-    "FNS2022sum": "주어진 10K 문서에 대해 의미적으로 유사한 요약을 검색합니다.",
-    "FiNNAsum": "주어진 뉴스 텍스트에 대해 의미적으로 유사한 요약을 검색합니다.",
-    "FinEvaHeadlinesum": "주어진 금융 문서에 대해 의미적으로 유사한 요약을 검색합니다.",
-    "FinEvasum": "주어진 금융 문서에 대해 의미적으로 유사한 요약을 검색합니다.",
-
-    "HeadlineACPairClassification": "주어진 금융 텍스트의 감성을 분류합니다.",
-    "HeadlinePDDPairClassification": "주어진 금융 텍스트의 감성을 분류합니다.",
-    "HeadlinePDUPairClassification": "주어진 금융 텍스트의 감성을 분류합니다.",
-    "AFQMCPairClassification": "의미적으로 유사한 질문을 매칭합니다."
+    # Summ
+    "KorLawSummarization" : "주어진 법률에 대한 요약문이 맞는지 0 (False), 1 (True) 로 분류합니다.",
+    "KorNewsSummarization": "주어진 뉴스에 대한 요약문이 맞는지 0 (False), 1 (True) 로 분류합니다.",
+    "KorOpinionSummarization": "주어진 칼럼에 대한 요약문이 맞는지 0 (False), 1 (True) 로 분류합니다.",
+    "KorFinanceNewsSummarization": "주어진 경제 뉴스에 대한 요약문이 맞는지 0 (False), 1 (True) 로 분류합니다.",
+    "KorFinanceColumnSummarization": "주어진 경제 칼럼에 대한 요약문이 맞는지 0 (False), 1 (True) 로 분류합니다.",
 }

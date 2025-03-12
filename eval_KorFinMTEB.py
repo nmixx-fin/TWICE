@@ -12,36 +12,58 @@ from example_models.gte_model import GTERESModel
 from eval_instruction import task2instruction, kor_task2instruction
 
 TASK_LIST_CLASSIFICATION = [
-    "FinSentClassification",
-    "ESGClassification",
-    "FOMCClassification"
+    "KorFinSentClassification",
+    "KorESGClassification",
+    "KorFOMCClassification",
+    "KorIndustryClassification",
+    "KorFinascSentClassification",
+    "KorFinMMLUClassification",
+    "KorFinBQAClassification",
+    "KorFinMCQAClassification",
+    "KorNewsBQAClassification"
 ]
 
 TASK_LIST_RETRIEVAL = [
-    "TATQARetrieval",
-    "USNewsRetrieval",
-    "TheGoldmanEnRetrieval"
+    #"TATQARetrieval",
+    "KorTATQARetrieval",
+    # "USNewsRetrieval",
+    "KorNewsRetrieval",
+    # "TheGoldmanEnRetrieval",
+    "KorBoKDictRetrieval",
+    "KorFSSDictRetrieval",
+    "KorMarketReportRetrieval"
 ]
 
 TASK_LIST_CLUSTERING = [
-    "WikiCompany2IndustryClustering",
+    # "WikiCompany2IndustryClustering",
     "KorDartCompany2IndustryClustering",
-    "KorFinAscCompany2IndustryClustering"
+    "KorMinDS14Clustering"
 ]
 
 TASK_LIST_RERANKING = [
-     "FiQA2018Reranking",
+    #  "FiQA2018Reranking",
      "KorFiQA2018Reranking"
 ]
 
 TASK_LIST_STS = [
-    "FinSTS"
+    # "FinSTS",
+    "KorFinSTS"
 ]
 
 TASK_LIST_PAIRCLASSIFICATION = [
-     "HeadlineACPairClassification",
-     "KorHeadlineACPairClassification"
+     # "HeadlineACPairClassification",
+     "KorHeadlineACPairClassification",
+     "KorContentACPairClassification",
+     "KorOpnionHeadlineACPairClassification"
 ]
+
+TASK_LIST_SUMMARIZATION = [
+    "KorLawSummarization",
+    "KorNewsSummarization",
+    "KorOpinionSummarization",
+    "KorFinanceNewsSummarization",
+    "KorFinanceColumnSummarization"
+] 
 
 def _setup_logger():
     log_format = logging.Formatter("[%(asctime)s %(levelname)s] %(message)s")
