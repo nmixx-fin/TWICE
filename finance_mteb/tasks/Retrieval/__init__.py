@@ -11,6 +11,11 @@ from .eng.TradeTheEventEncyclopediaRetrieval import *
 from .eng.USNewsRetrieval import *
 from .eng.TradeTheEventNewsRetrieval import *
 
+from .kor.KorTATQARetrieval import *
+from .kor.KorNewsRetrieval import *
+from .kor.KorBoKDictRetrieval import *
+from .kor.KorFSSDictRetrieval import *
+from .kor.KorMarketReportRetrieval import *
 
 from .zho.FinTruthQARetrieval import *
 from .zho.FinEvaRetrieval import *
