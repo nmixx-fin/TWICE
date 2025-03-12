@@ -9,23 +9,24 @@ import ast
 from datasets import load_dataset, Dataset, DatasetDict
 
 
-class WikiCompany2IndustryClustering(AbsTaskClustering):
+class KorFinAscCompany2IndustryClustering(AbsTaskClustering):
     metadata = TaskMetadata(
-        name="WikiCompany2IndustryClustering",
+        name="KorFinAscCompany2IndustryClustering",
         description="Clustering the related industry domain according to the company description.",
-        reference="",
+        reference="https://aclanthology.org/W18-6532.pdf",
         dataset={
-            "path": "nmixx-fin/twice_ko-trans_WikiCompany2Industry",
+            "path": "nmixx-fin/twice_dart_company2industry_clustering",
             "revision": "main",
         },
         type="Clustering",
         category="p2p",
-        eval_splits=["train"],
+        eval_splits=["test"],
         eval_langs=["kor-Hang"],
         main_score="v_measure",
     )
+    
     def dataset_transform(self):
-        self.dataset = pd.DataFrame(self.dataset['train'])
+        self.dataset = pd.DataFrame(self.dataset['test'])
 
         self.dataset['sentences'] = self.dataset['sentences'].apply(ast.literal_eval)
         self.dataset['labels'] = self.dataset['labels'].apply(ast.literal_eval)
@@ -34,5 +35,4 @@ class WikiCompany2IndustryClustering(AbsTaskClustering):
         dataset_hf = Dataset.from_pandas(self.dataset)
 
         # train split만 포함한 DatasetDict 형태로 반환
-        self.dataset = DatasetDict({"train": dataset_hf})
-        
+        self.dataset = DatasetDict({"test": dataset_hf})
