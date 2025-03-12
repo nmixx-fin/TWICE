@@ -112,44 +112,169 @@ class AbsTaskClassification(AbsTask):
                 train_split["text"], train_split["label"], self.samples_per_label, idxs
             )
 
-            if self.method == "kNN":
-                evaluator = kNNClassificationEvaluator(
-                    X_sampled,
-                    y_sampled,
-                    eval_split["text"],
-                    eval_split["label"],
-                    task_name=self.metadata.name,
-                    **params,
+            if "MCQA" in self.metadata.name:
+                evaluator = self._get_mcqa_evaluator(
+                    X_sampled, y_sampled, eval_split, **params
                 )
-            elif self.method == "kNN-pytorch":
-                evaluator = kNNClassificationEvaluatorPytorch(
-                    X_sampled,
-                    y_sampled,
-                    eval_split["text"],
-                    eval_split["label"],
-                    task_name=self.metadata.name,
-                    **params,
+            elif "BQA" in self.metadata.name:
+                evaluator = self._get_bqa_evaluator(
+                    X_sampled, y_sampled, eval_split, **params
                 )
-            elif self.method == "logReg":
-                evaluator = logRegClassificationEvaluator(
-                    X_sampled,
-                    y_sampled,
-                    eval_split["text"],
-                    eval_split["label"],
-                    task_name=self.metadata.name,
-                    **params,
+            elif "MMLU" in self.metadata.name:
+                evaluator = self._get_mmlu_evaluator(
+                    X_sampled, y_sampled, eval_split, **params
                 )
             else:
-                raise ValueError(f"Method {self.method} not supported")
+                evaluator = self._get_standard_evaluator(
+                    X_sampled, y_sampled, eval_split, **params
+                )
 
             scores_exp, test_cache = evaluator(model, test_cache=test_cache)
             scores.append(scores_exp)
+
 
         avg_scores: dict[str, Any] = {
             k: np.mean([s[k] for s in scores]) for k in scores[0].keys()
         }
         avg_scores["scores_per_experiment"] = scores
         return avg_scores
+
+    def _get_mcqa_evaluator(self, X_sampled, y_sampled, eval_split, **params):
+        # "text"와 "query" 컬럼을 결합하여 평가를 위한 evaluator를 반환합니다.
+        combined_input = [f"{t} {q}" for t, q in zip(eval_split["text"], eval_split["query"])]
+        
+        if self.method == "kNN":
+            return kNNClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                eval_split["options"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "kNN-pytorch":
+            return kNNClassificationEvaluatorPytorch(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                eval_split["options"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "logReg":
+            return logRegClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                eval_split["options"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        else:
+            raise ValueError(f"Method {self.method} not supported")
+    
+    def _get_bqa_evaluator(self, X_sampled, y_sampled, eval_split, **params):
+        # "text"와 "query" 컬럼을 결합하여 평가를 위한 evaluator를 반환합니다.
+        combined_input = [f"{t} {q}" for t, q in zip(eval_split["text"], eval_split["query"])]
+        
+        if self.method == "kNN":
+            return kNNClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "kNN-pytorch":
+            return kNNClassificationEvaluatorPytorch(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "logReg":
+            return logRegClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        else:
+            raise ValueError(f"Method {self.method} not supported")
+
+    def _get_mmlu_evaluator(self, X_sampled, y_sampled, eval_split, **params):
+        # "query"와 "options" 컬럼을 사용하여 평가를 위한 evaluator를 반환합니다.
+        combined_input = [f"{q} Options: {o}" for q, o in zip(eval_split["query"], eval_split["options"])]
+        
+        if self.method == "kNN":
+            return kNNClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "kNN-pytorch":
+            return kNNClassificationEvaluatorPytorch(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "logReg":
+            return logRegClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                combined_input,
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        else:
+            raise ValueError(f"Method {self.method} not supported")
+        
+    def _get_standard_evaluator(self, X_sampled, y_sampled, eval_split, **params):
+        if self.method == "kNN":
+            return kNNClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                eval_split["text"],
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "kNN-pytorch":
+            return kNNClassificationEvaluatorPytorch(
+                X_sampled,
+                y_sampled,
+                eval_split["text"],
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        elif self.method == "logReg":
+            return logRegClassificationEvaluator(
+                X_sampled,
+                y_sampled,
+                eval_split["text"],
+                eval_split["label"],
+                task_name=self.metadata.name,
+                **params,
+            )
+        else:
+            raise ValueError(f"Method {self.method} not supported")
+
 
     def _undersample_data(self, X, y, samples_per_label: int, idxs=None):
         """Undersample data to have samples_per_label samples of each label"""

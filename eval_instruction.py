@@ -6,12 +6,12 @@ kor_task2instruction = {
     "KorFinSentClassification": "주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
     "KorESGClassification": "주어진 금융 텍스트를 'E', 'S', 'G', 'Non-ESG' 클래스 중 하나로 분류합니다.",
     "KorFOMCClassification": "FOMC에서 제공된 금융 텍스트를  'Hawkish', 'Dovish', 'Neutral' 클래스 중 하나로 분류합니다.",
-    "KorIndustryClassification" : "산업 분석 리포트 내 텍스트를 보고, 어떤 산업군에 대한 서술인지 ['건설', '반도체', '석유화학', '유통', '은행', '음식료', '자동차', '조선', '철강금속', '통신'] 클래스 중 하나로 분류합니다."
+    "KorIndustryClassification" : "산업 분석 리포트 내 텍스트를 보고, 어떤 산업군에 대한 서술인지 ['건설', '반도체', '석유화학', '유통', '은행', '음식료', '자동차', '조선', '철강금속', '통신'] 클래스 중 하나로 분류합니다.",
     "KorFinascSentClassification" : "금융 분석 보고서 내의 텍스트를 보고, 각 aspect에 따른 src의 감정을 'POSITIVE', 'NEUTRAL', 'NEGATIVE' 클래스 중 하나로 분류합니다.",
-    "KorFinancialMMLUClassification" : "금융 도메인의 질문과 선택지가 주어졌을 때, 제공된 선택지 중 하나의 답변을 반환합니다.",
-    "KorFinancialBQAClassification" : "주어진 금융 도메인 질문에 대해, 해당 텍스트가 올바른지 'Yes', 'No' 중 하나로 분류합니다.",
-    "KorFinancialMCQAClassification" : "금융 도메인의 질문과 선택지가 주어졌을 때, 제공된 선택지 중 하나의 답변을 반환합니다.",
-    "KorNewsBQAClassification" : "주어진 금융 도메인 텍스트에 대해, 해당 텍스트가 올바른지 'Yes', 'No' 중 하나로 분류합니다.",
+    "KorFinMMLUClassification" : "주어진 금융 도메인의 질문과 선택지가 주어졌을 때, 제공된 선택지 1, 2, 3, 4, 5 중 질문에 대한 정답 선택지 번호를 반환합니다.",
+    "KorFinBQAClassification" : "주어진 금융 도메인 텍스트를 보고, 질문에 대하여 해당 텍스트가 올바른지 0 (False), 1 (True) 로 분류합니다.",
+    "KorFinMCQAClassification" : "주어진 금융 도메인 텍스트를 보고, 질문과 선택지가 주어졌을 때, 제공된 선택지 1, 2, 3, 4 중 질문에 대한 정답 선택지 번호를 반환합니다.",
+    "KorNewsBQAClassification" : "주어진 금융 도메인 텍스트를 보고, 질문에 대하여 해당 텍스트가 올바른지 0 (False), 1 (True) 중 하나로 분류합니다.",
 
     # Retrieval
     "KorTATQARetrieval": "재무 리포트에서 주어진 금융 텍스트에 대해 가장 적절한 사용자 답변을 검색합니다.",
@@ -22,7 +22,7 @@ kor_task2instruction = {
 
     # Clustering
     "KorMInDS14EnClustering": "주어진 텍스트의 주요 의도를 분류합니다.",
-    "KorDartCompany2IndustryClustering" : "사업 보고서에 나와있는 기업 설명 텍스트를 기반으로 산업군을 분류합니다."
+    "KorDartCompany2IndustryClustering" : "사업 보고서에 나와있는 기업 설명 텍스트를 기반으로 산업군을 분류합니다.",
 
     # Reranking
     "KorFiQA2018Reranking": "주어진 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",

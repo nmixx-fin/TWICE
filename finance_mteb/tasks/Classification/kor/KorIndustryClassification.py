@@ -1,7 +1,15 @@
+from __future__ import annotations
+
+from finance_mteb.abstasks.TaskMetadata import TaskMetadata
+
+from ....abstasks import AbsTaskClassification
+from ....eval_instruction import kor_task2instruction
+
 class KorIndustryClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="KorIndustryClassification",
-        description="산업 분석 리포트 내 텍스트를 보고, 어떤 산업군에 대한 서술인지 ['건설', '반도체', '석유화학', '유통', '은행', '음식료', '자동차', '조선', '철강금속', '통신'] 클래스 중 하나로 분류합니다.",
+        description=kor_task2instruction["KorIndustryClassification"],
+        reference="Industry/Investment Analysis Report",
         dataset={
             "path": "nmixx-fin/twice_kr_industry_cls",
             "revision": "main",

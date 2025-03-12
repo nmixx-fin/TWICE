@@ -1,7 +1,15 @@
+from __future__ import annotations
+
+from finance_mteb.abstasks.TaskMetadata import TaskMetadata
+
+from ....abstasks import AbsTaskClassification
+from ....eval_instruction import kor_task2instruction
+
 class KorFinascSentClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="KorFinascSentClassification",
-        description="주어진 금융 텍스트의 감성을 긍정, 부정, 중립 중 하나로 분류합니다.",
+        description=kor_task2instruction["KorFinascSentClassification"],
+        reference="amphora/korfin-asc",
         dataset={
             "path": "nmixx-fin/twice_korfin-asc_sent_cls",
             "revision": "main",

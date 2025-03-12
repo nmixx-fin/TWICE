@@ -3,11 +3,12 @@ from __future__ import annotations
 from finance_mteb.abstasks.TaskMetadata import TaskMetadata
 
 from ....abstasks import AbsTaskClassification
+from ....eval_instruction import kor_task2instruction
 
 class KorESGClassification(AbsTaskClassification):
     metadata = TaskMetadata(
         name="KorESGClassification",
-        description="주어진 금융 텍스트를 'E', 'S', 'G', 'Non-ESG' 클래스 중 하나로 분류합니다.",
+        description=kor_task2instruction["KorESGClassification"],
         reference="",
         dataset={
             "path": "nmixx-fin/twice_kr_esg_cls",
