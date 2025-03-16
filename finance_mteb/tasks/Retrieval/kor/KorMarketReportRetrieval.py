@@ -8,6 +8,7 @@ class KorMarketReportRetrieval(AbsTaskRetrieval):
     metadata = TaskMetadata(
         name="KorMarketReportRetrieval",
         description="주식 시장과 관련된 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",
+        reference="Intenal Dataset",
         dataset={
             "path": "nmixx-fin/twice_kr_market_report_retrieval",
             "revision": "main",

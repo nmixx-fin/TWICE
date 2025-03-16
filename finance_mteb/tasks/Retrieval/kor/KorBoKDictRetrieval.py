@@ -8,7 +8,7 @@ class KorBoKDictRetrieval(AbsTaskRetrieval):
     metadata = TaskMetadata(
         name="KorBoKDictRetrieval",
         description="주어진 금융 용어에 대해 답변에 도움이 될 문서를 검색합니다.",
-        reference="",
+        reference="Intenal Dataset", # reference 추가
         dataset={
             "path": "nmixx-fin/twice_bok_dict_retrieval",
             "revision": "main",

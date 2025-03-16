@@ -10,7 +10,12 @@ from .eng.SemEva2017Classification import *
 from .eng.FinancialFraudClassification import * 
 
 from .kor.KorESGClassification import *
-from .kor.KorESGClassification import *
+
+# KorESGClassification이 중복되고 KorFinSentClassification이 누락돼서 추가
+# from .kor.KorESGClassification import *
+
+from .kor.KorFinSentClassification import *
+
 from .kor.KorFOMCClassification import *
 from .kor.KorIndustryClassification import *
 from .kor.KorFinascSentClassification import *

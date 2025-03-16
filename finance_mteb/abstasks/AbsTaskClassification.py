@@ -164,14 +164,24 @@ class AbsTaskClassification(AbsTask):
                 **params,
             )
         elif self.method == "logReg":
+            # return logRegClassificationEvaluator(
+            #     X_sampled,
+            #     y_sampled,
+            #     combined_input,
+            #     eval_split["label"],
+            #     eval_split["options"],
+            #     task_name=self.metadata.name,
+            #     **params,
+            # )
+
+            # logRegClassificationEvaluator 생성자의 매개변수 순서를 정확히 맞추어 호출
             return logRegClassificationEvaluator(
-                X_sampled,
-                y_sampled,
-                combined_input,
-                eval_split["label"],
-                eval_split["options"],
-                task_name=self.metadata.name,
-                **params,
+                X_sampled,                  
+                y_sampled,                  
+                eval_split["text"],         
+                eval_split["label"],        
+                self.metadata.name,         # task_name (5번째 인자, 위치 인자로 전달)
+                **params                    
             )
         else:
             raise ValueError(f"Method {self.method} not supported")
@@ -212,8 +222,13 @@ class AbsTaskClassification(AbsTask):
 
     def _get_mmlu_evaluator(self, X_sampled, y_sampled, eval_split, **params):
         # "query"와 "options" 컬럼을 사용하여 평가를 위한 evaluator를 반환합니다.
-        combined_input = [f"{q} Options: {o}" for q, o in zip(eval_split["query"], eval_split["options"])]
         
+        # 수정 전
+        # combined_input = [f"{q} Options: {o}" for q, o in zip(eval_split["query"], eval_split["options"])]
+        
+        # 수정 후
+        combined_input = [f"{q} Options: {o}" for q, o in zip(eval_split["text"], eval_split["options"])]  # 'query' → 'text'
+
         if self.method == "kNN":
             return kNNClassificationEvaluator(
                 X_sampled,

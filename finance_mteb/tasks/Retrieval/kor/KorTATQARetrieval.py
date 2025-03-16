@@ -8,6 +8,7 @@ class KorTATQARetrieval(AbsTaskRetrieval):
     metadata = TaskMetadata(
         name="KorTATQARetrieval",
         description="재무 리포트에서 주어진 금융 텍스트에 대해 가장 적절한 사용자 답변을 검색합니다.",
+        reference="Intenal Dataset",
         dataset={
             "path": "nmixx-fin/twice_tat_qa_retrieval",
             "revision": "main",

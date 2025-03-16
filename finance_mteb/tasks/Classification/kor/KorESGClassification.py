@@ -3,7 +3,11 @@ from __future__ import annotations
 from finance_mteb.abstasks.TaskMetadata import TaskMetadata
 
 from ....abstasks import AbsTaskClassification
-from ....eval_instruction import kor_task2instruction
+
+# from ....eval_instruction import kor_task2instruction
+
+# 절대 경로 임포트로 변경
+from eval_instruction import kor_task2instruction
 
 class KorESGClassification(AbsTaskClassification):
     metadata = TaskMetadata(

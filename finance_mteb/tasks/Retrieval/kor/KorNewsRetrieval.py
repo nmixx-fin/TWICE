@@ -8,7 +8,7 @@ class KorNewsRetrieval(AbsTaskRetrieval):
     metadata = TaskMetadata(
         name="KorNewsRetrieval",
         description="주어진 금융 텍스트에 대해 답변에 도움이 될 문서를 검색합니다.",
-        reference="",
+        reference="Intenal Dataset",
         dataset={
             "path": "nmixx-fin/twice_kr_news_retrieval",
             "revision": "main",
