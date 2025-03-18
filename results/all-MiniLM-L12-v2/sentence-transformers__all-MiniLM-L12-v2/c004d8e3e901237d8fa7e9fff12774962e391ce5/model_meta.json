@@ -1,0 +1,1 @@
+{"name": "sentence-transformers/all-MiniLM-L12-v2", "revision": "c004d8e3e901237d8fa7e9fff12774962e391ce5", "release_date": null, "languages": [], "n_parameters": null, "memory_usage": null, "max_tokens": null, "embed_dim": null, "license": null, "open_source": null, "similarity_fn_name": "cosine", "framework": ["Sentence Transformers"], "loader": null}
