@@ -8,7 +8,7 @@ class KorFSSDictRetrieval(AbsTaskRetrieval):
     metadata = TaskMetadata(
         name="KorFSSDictRetrieval",
         description="주어진 금융 용어에 대해 답변에 도움이 될 문서를 검색합니다.",
-        reference="",
+        reference="Intenal Dataset",
         dataset={
             "path": "nmixx-fin/twice_fss_dict_retrieval",
             "revision": "main",
