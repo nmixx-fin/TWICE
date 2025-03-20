@@ -100,7 +100,6 @@ class RerankingEvaluator(Evaluator):
             all_query_embs = np.asarray(
                 encode_queries_func(
                     [sample["query"] for sample in self.samples],
-                    prompt_name=self.task_name,
                     batch_size=self.batch_size,
                 )
             )
@@ -112,7 +111,6 @@ class RerankingEvaluator(Evaluator):
             all_query_embs = self._encode_unique_texts(
                 all_query_flattened,
                 encode_queries_func,
-                prompt_name=self.task_name,
                 batch_size=self.batch_size,
             )
         else:
@@ -206,7 +204,6 @@ class RerankingEvaluator(Evaluator):
         all_docs_embs = self._encode_unique_texts(
             all_docs,
             encode_corpus_func,
-            prompt_name=self.task_name,
             batch_size=self.batch_size,
         )
 
@@ -306,7 +303,7 @@ class RerankingEvaluator(Evaluator):
 
         all_docs_embs = np.asarray(
             encode_corpus_func(
-                all_docs, prompt_name=self.task_name, batch_size=self.batch_size
+                all_docs, batch_size=self.batch_size
             )
         )
 
@@ -422,7 +419,6 @@ class RerankingEvaluator(Evaluator):
     def _encode_unique_texts(
         all_texts: list[str],
         encode_fn: Callable,
-        prompt_name: str | None,
         batch_size: int,
     ):
         index_map, all_unique_texts, all_texts_indexes = {}, [], []
@@ -436,7 +432,7 @@ class RerankingEvaluator(Evaluator):
             f"A total on {len(all_texts) - len(all_unique_texts)}/{len(all_texts)} duplicate texts were found during encoding. Only encoding unique text and duplicating embeddings across."
         )
         all_unique_texts_embs = np.asarray(
-            encode_fn(all_unique_texts, prompt_name=prompt_name, batch_size=batch_size)
+            encode_fn(all_unique_texts, batch_size=batch_size)
         )
         return all_unique_texts_embs[all_texts_indexes]
 
