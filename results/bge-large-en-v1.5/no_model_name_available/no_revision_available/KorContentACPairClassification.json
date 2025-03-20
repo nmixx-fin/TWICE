@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 5187.59547829628,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.807,
+          "accuracy_threshold": 0.9932311202471173,
+          "ap": 0.3422933572144989,
+          "f1": 0.41007194244604317,
+          "f1_threshold": 0.9492972900663723,
+          "precision": 0.3202247191011236,
+          "recall": 0.57
+        },
+        "dot": {
+          "accuracy": 0.809,
+          "accuracy_threshold": 0.990234375,
+          "ap": 0.34255421960424803,
+          "f1": 0.4108108108108108,
+          "f1_threshold": 0.94970703125,
+          "precision": 0.3211267605633803,
+          "recall": 0.57
+        },
+        "euclidean": {
+          "accuracy": 0.807,
+          "accuracy_threshold": 0.116302559165886,
+          "ap": 0.342146322795999,
+          "f1": 0.41007194244604317,
+          "f1_threshold": 0.31852341672175266,
+          "precision": 0.3202247191011236,
+          "recall": 0.57
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.34255421960424803,
+        "manhattan": {
+          "accuracy": 0.807,
+          "accuracy_threshold": 2.9884876906871796,
+          "ap": 0.3420895011855295,
+          "f1": 0.40942028985507245,
+          "f1_threshold": 8.123492181301117,
+          "precision": 0.3210227272727273,
+          "recall": 0.565
+        },
+        "max": {
+          "accuracy": 0.809,
+          "ap": 0.34255421960424803,
+          "f1": 0.4108108108108108
+        },
+        "similarity": {
+          "accuracy": 0.807,
+          "accuracy_threshold": 0.9932311202471173,
+          "ap": 0.3422933572144989,
+          "f1": 0.41007194244604317,
+          "f1_threshold": 0.9492972900663723,
+          "precision": 0.3202247191011236,
+          "recall": 0.57
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

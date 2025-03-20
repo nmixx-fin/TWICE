@@ -16,7 +16,7 @@ class KorOpnionHeadlineACPairClassification(AbsTaskPairClassification):
         description="Financial text sentiment categorization dataset.",
         reference="",
         dataset={
-            "path": "nmixx-fin/twice_kor_news_opinion_headline_pair_cls",
+            "path": "nmixx-fin/twice_kor_opinion_headline_pair_cls",
             "revision": "main",
         },
         type="PairClassification",

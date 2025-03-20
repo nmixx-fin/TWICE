@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 496.39112091064453,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.85,
+          "accuracy_threshold": 0.9320881202676852,
+          "ap": 0.6303822649390555,
+          "f1": 0.6140350877192983,
+          "f1_threshold": 0.9099079909374175,
+          "precision": 0.546875,
+          "recall": 0.7
+        },
+        "dot": {
+          "accuracy": 0.85,
+          "accuracy_threshold": 0.93359375,
+          "ap": 0.631313188589323,
+          "f1": 0.6140350877192983,
+          "f1_threshold": 0.90966796875,
+          "precision": 0.546875,
+          "recall": 0.7
+        },
+        "euclidean": {
+          "accuracy": 0.85,
+          "accuracy_threshold": 0.36852776059538406,
+          "ap": 0.6303547619155843,
+          "f1": 0.6140350877192983,
+          "f1_threshold": 0.42443645957994347,
+          "precision": 0.546875,
+          "recall": 0.7
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.6315404713655174,
+        "manhattan": {
+          "accuracy": 0.85,
+          "accuracy_threshold": 9.23084381222725,
+          "ap": 0.6315404713655174,
+          "f1": 0.6160714285714286,
+          "f1_threshold": 10.647286504507065,
+          "precision": 0.5564516129032258,
+          "recall": 0.69
+        },
+        "max": {
+          "accuracy": 0.85,
+          "ap": 0.6315404713655174,
+          "f1": 0.6160714285714286
+        },
+        "similarity": {
+          "accuracy": 0.85,
+          "accuracy_threshold": 0.9320881202676852,
+          "ap": 0.6303822649390555,
+          "f1": 0.6140350877192983,
+          "f1_threshold": 0.9099079909374175,
+          "precision": 0.546875,
+          "recall": 0.7
+        }
+      }
+    ]
+  },
+  "task_name": "KorOpnionHeadlineACPairClassification"
+}

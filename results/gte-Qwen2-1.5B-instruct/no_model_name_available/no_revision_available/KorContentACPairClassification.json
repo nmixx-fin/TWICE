@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 4767.117757797241,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.811,
+          "accuracy_threshold": 0.9920394647848428,
+          "ap": 0.3808095308987287,
+          "f1": 0.4285714285714286,
+          "f1_threshold": 0.9478453747669435,
+          "precision": 0.3433734939759036,
+          "recall": 0.57
+        },
+        "dot": {
+          "accuracy": 0.811,
+          "accuracy_threshold": 0.9921875,
+          "ap": 0.3786424602294698,
+          "f1": 0.4318181818181818,
+          "f1_threshold": 0.9482421875,
+          "precision": 0.3475609756097561,
+          "recall": 0.57
+        },
+        "euclidean": {
+          "accuracy": 0.811,
+          "accuracy_threshold": 0.12618426424541543,
+          "ap": 0.3808169646542564,
+          "f1": 0.4285714285714286,
+          "f1_threshold": 0.32305292359006976,
+          "precision": 0.3433734939759036,
+          "recall": 0.57
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.3808169646542564,
+        "manhattan": {
+          "accuracy": 0.811,
+          "accuracy_threshold": 3.8494695127010345,
+          "ap": 0.37801015063800913,
+          "f1": 0.428030303030303,
+          "f1_threshold": 9.829949647188187,
+          "precision": 0.3445121951219512,
+          "recall": 0.565
+        },
+        "max": {
+          "accuracy": 0.811,
+          "ap": 0.3808169646542564,
+          "f1": 0.4318181818181818
+        },
+        "similarity": {
+          "accuracy": 0.811,
+          "accuracy_threshold": 0.9920394647848428,
+          "ap": 0.3808095308987287,
+          "f1": 0.4285714285714286,
+          "f1_threshold": 0.9478453747669435,
+          "precision": 0.3433734939759036,
+          "recall": 0.57
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}
