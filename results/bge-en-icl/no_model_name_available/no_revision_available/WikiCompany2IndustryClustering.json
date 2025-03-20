@@ -1,0 +1,32 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 1459.95867228508,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.725143706295922,
+        "v_measure": 0.725143706295922,
+        "v_measure_std": 0.001840066305128396,
+        "v_measures": [
+          0.7269837726010504,
+          0.7269837726010504,
+          0.7269837726010504,
+          0.7269837726010504,
+          0.7269837726010504,
+          0.7233036399907936,
+          0.7233036399907936,
+          0.7233036399907936,
+          0.7233036399907936,
+          0.7233036399907936
+        ]
+      }
+    ]
+  },
+  "task_name": "WikiCompany2IndustryClustering"
+}

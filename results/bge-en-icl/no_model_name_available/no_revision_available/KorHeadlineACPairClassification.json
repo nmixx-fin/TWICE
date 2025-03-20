@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 12.126474618911743,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.9757615578028245,
+          "ap": 0.43379343655351527,
+          "f1": 0.43750000000000006,
+          "f1_threshold": 0.9282046512446839,
+          "precision": 0.3351063829787234,
+          "recall": 0.63
+        },
+        "dot": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.9755859375,
+          "ap": 0.43188741625452864,
+          "f1": 0.4397905759162304,
+          "f1_threshold": 0.92822265625,
+          "precision": 0.3378016085790885,
+          "recall": 0.63
+        },
+        "euclidean": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.22018689953454063,
+          "ap": 0.4337533904215167,
+          "f1": 0.43750000000000006,
+          "f1_threshold": 0.37894187474084695,
+          "precision": 0.3351063829787234,
+          "recall": 0.63
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.43689274248627896,
+        "manhattan": {
+          "accuracy": 0.816,
+          "accuracy_threshold": 14.528909891843796,
+          "ap": 0.43689274248627896,
+          "f1": 0.44250871080139376,
+          "f1_threshold": 19.048828691244125,
+          "precision": 0.339572192513369,
+          "recall": 0.635
+        },
+        "max": {
+          "accuracy": 0.816,
+          "ap": 0.43689274248627896,
+          "f1": 0.44250871080139376
+        },
+        "similarity": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.9757615578028245,
+          "ap": 0.43379343655351527,
+          "f1": 0.43750000000000006,
+          "f1_threshold": 0.9282046512446839,
+          "precision": 0.3351063829787234,
+          "recall": 0.63
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}

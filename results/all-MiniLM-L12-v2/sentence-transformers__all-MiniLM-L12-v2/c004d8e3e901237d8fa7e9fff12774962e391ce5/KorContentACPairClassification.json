@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 45.45309615135193,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.822,
+          "accuracy_threshold": 0.9728584289550781,
+          "ap": 0.3693053071887803,
+          "f1": 0.4057971014492754,
+          "f1_threshold": 0.954193115234375,
+          "precision": 0.4827586206896552,
+          "recall": 0.35
+        },
+        "dot": {
+          "accuracy": 0.822,
+          "accuracy_threshold": 0.9728584885597229,
+          "ap": 0.3693053071887803,
+          "f1": 0.4057971014492754,
+          "f1_threshold": 0.9541930556297302,
+          "precision": 0.4827586206896552,
+          "recall": 0.35
+        },
+        "euclidean": {
+          "accuracy": 0.822,
+          "accuracy_threshold": 0.23298531770706177,
+          "ap": 0.3693053071887803,
+          "f1": 0.4057971014492754,
+          "f1_threshold": 0.302673876285553,
+          "precision": 0.4827586206896552,
+          "recall": 0.35
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.3702516828679303,
+        "manhattan": {
+          "accuracy": 0.823,
+          "accuracy_threshold": 3.5643930435180664,
+          "ap": 0.3702516828679303,
+          "f1": 0.4069767441860465,
+          "f1_threshold": 4.684897422790527,
+          "precision": 0.4861111111111111,
+          "recall": 0.35
+        },
+        "max": {
+          "accuracy": 0.823,
+          "ap": 0.3702516828679303,
+          "f1": 0.4069767441860465
+        },
+        "similarity": {
+          "accuracy": 0.822,
+          "accuracy_threshold": 0.9728585481643677,
+          "ap": 0.3693053071887803,
+          "f1": 0.4057971014492754,
+          "f1_threshold": 0.9541932344436646,
+          "precision": 0.4827586206896552,
+          "recall": 0.35
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

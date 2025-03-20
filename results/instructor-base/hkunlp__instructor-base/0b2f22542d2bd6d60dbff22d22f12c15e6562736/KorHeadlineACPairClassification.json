@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 1.3321409225463867,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.804,
+          "accuracy_threshold": 1.0,
+          "ap": 0.24870621184784997,
+          "f1": 0.46601941747572817,
+          "f1_threshold": 0.9925638437271118,
+          "precision": 0.32245681381957775,
+          "recall": 0.84
+        },
+        "dot": {
+          "accuracy": 0.801,
+          "accuracy_threshold": 1.0000001192092896,
+          "ap": 0.24999777757189895,
+          "f1": 0.46601941747572817,
+          "f1_threshold": 0.9925638437271118,
+          "precision": 0.32245681381957775,
+          "recall": 0.84
+        },
+        "euclidean": {
+          "accuracy": 0.802,
+          "accuracy_threshold": 0.0,
+          "ap": 0.24969507388172726,
+          "f1": 0.46601941747572817,
+          "f1_threshold": 0.12195102870464325,
+          "precision": 0.32245681381957775,
+          "recall": 0.84
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.2520173011873704,
+        "manhattan": {
+          "accuracy": 0.802,
+          "accuracy_threshold": 0.0,
+          "ap": 0.24959746859214185,
+          "f1": 0.4651810584958218,
+          "f1_threshold": 2.6722304821014404,
+          "precision": 0.3223938223938224,
+          "recall": 0.835
+        },
+        "max": {
+          "accuracy": 0.804,
+          "ap": 0.2520173011873704,
+          "f1": 0.46601941747572817
+        },
+        "similarity": {
+          "accuracy": 0.802,
+          "accuracy_threshold": 1.0000001192092896,
+          "ap": 0.2520173011873704,
+          "f1": 0.46601941747572817,
+          "f1_threshold": 0.9925639629364014,
+          "precision": 0.32245681381957775,
+          "recall": 0.84
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}

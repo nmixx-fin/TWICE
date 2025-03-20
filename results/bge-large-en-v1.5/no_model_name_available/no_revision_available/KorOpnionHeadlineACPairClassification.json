@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 1548.239625453949,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.9537165087566333,
+          "ap": 0.4736452581699385,
+          "f1": 0.5348837209302325,
+          "f1_threshold": 0.9023985290847238,
+          "precision": 0.43670886075949367,
+          "recall": 0.69
+        },
+        "dot": {
+          "accuracy": 0.823,
+          "accuracy_threshold": 0.95361328125,
+          "ap": 0.47299814285517644,
+          "f1": 0.5349301397205589,
+          "f1_threshold": 0.9052734375,
+          "precision": 0.44518272425249167,
+          "recall": 0.67
+        },
+        "euclidean": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.3042093382744361,
+          "ap": 0.4735997456731634,
+          "f1": 0.53515625,
+          "f1_threshold": 0.4396421321815034,
+          "precision": 0.4391025641025641,
+          "recall": 0.685
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.4736452581699385,
+        "manhattan": {
+          "accuracy": 0.822,
+          "accuracy_threshold": 8.096781849861145,
+          "ap": 0.4732731580201588,
+          "f1": 0.5402298850574713,
+          "f1_threshold": 11.346943765878677,
+          "precision": 0.43788819875776397,
+          "recall": 0.705
+        },
+        "max": {
+          "accuracy": 0.823,
+          "ap": 0.4736452581699385,
+          "f1": 0.5402298850574713
+        },
+        "similarity": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.9537165087566333,
+          "ap": 0.4736452581699385,
+          "f1": 0.5348837209302325,
+          "f1_threshold": 0.9023985290847238,
+          "precision": 0.43670886075949367,
+          "recall": 0.69
+        }
+      }
+    ]
+  },
+  "task_name": "KorOpnionHeadlineACPairClassification"
+}

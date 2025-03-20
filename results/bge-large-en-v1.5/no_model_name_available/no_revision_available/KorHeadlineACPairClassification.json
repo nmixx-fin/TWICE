@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 1.071326494216919,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.9766038631879383,
+          "ap": 0.4374866973544447,
+          "f1": 0.509090909090909,
+          "f1_threshold": 0.9342092583681512,
+          "precision": 0.4271186440677966,
+          "recall": 0.63
+        },
+        "dot": {
+          "accuracy": 0.809,
+          "accuracy_threshold": 0.974609375,
+          "ap": 0.433731955561711,
+          "f1": 0.509090909090909,
+          "f1_threshold": 0.93408203125,
+          "precision": 0.4271186440677966,
+          "recall": 0.63
+        },
+        "euclidean": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.2163133067365788,
+          "ap": 0.43752191409685554,
+          "f1": 0.509090909090909,
+          "f1_threshold": 0.3626847853602496,
+          "precision": 0.4271186440677966,
+          "recall": 0.63
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.43752191409685554,
+        "manhattan": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 5.560180813074112,
+          "ap": 0.436361853915231,
+          "f1": 0.5083333333333333,
+          "f1_threshold": 9.063677877187729,
+          "precision": 0.4357142857142857,
+          "recall": 0.61
+        },
+        "max": {
+          "accuracy": 0.809,
+          "ap": 0.43752191409685554,
+          "f1": 0.509090909090909
+        },
+        "similarity": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.9766038631879383,
+          "ap": 0.4374866973544447,
+          "f1": 0.509090909090909,
+          "f1_threshold": 0.9342092583681512,
+          "precision": 0.4271186440677966,
+          "recall": 0.63
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}
