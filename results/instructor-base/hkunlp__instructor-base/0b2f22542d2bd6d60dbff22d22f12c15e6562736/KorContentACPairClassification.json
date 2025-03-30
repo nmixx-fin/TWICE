@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 47.86223316192627,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.805,
+          "accuracy_threshold": 0.9999948740005493,
+          "ap": 0.3449085338415499,
+          "f1": 0.40969162995594716,
+          "f1_threshold": 0.9964700937271118,
+          "precision": 0.3661417322834646,
+          "recall": 0.465
+        },
+        "dot": {
+          "accuracy": 0.805,
+          "accuracy_threshold": 0.9999948740005493,
+          "ap": 0.3449085338415499,
+          "f1": 0.40969162995594716,
+          "f1_threshold": 0.9964700937271118,
+          "precision": 0.3661417322834646,
+          "recall": 0.465
+        },
+        "euclidean": {
+          "accuracy": 0.805,
+          "accuracy_threshold": 0.003201626241207123,
+          "ap": 0.3449085338415499,
+          "f1": 0.40969162995594716,
+          "f1_threshold": 0.08402252197265625,
+          "precision": 0.3661417322834646,
+          "recall": 0.465
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.3450092154276383,
+        "manhattan": {
+          "accuracy": 0.805,
+          "accuracy_threshold": 0.07091233134269714,
+          "ap": 0.3450092154276383,
+          "f1": 0.41163310961968685,
+          "f1_threshold": 1.8257873058319092,
+          "precision": 0.3724696356275304,
+          "recall": 0.46
+        },
+        "max": {
+          "accuracy": 0.805,
+          "ap": 0.3450092154276383,
+          "f1": 0.41163310961968685
+        },
+        "similarity": {
+          "accuracy": 0.805,
+          "accuracy_threshold": 0.9999949932098389,
+          "ap": 0.3449085338415499,
+          "f1": 0.40969162995594716,
+          "f1_threshold": 0.9964700937271118,
+          "precision": 0.3661417322834646,
+          "recall": 0.465
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

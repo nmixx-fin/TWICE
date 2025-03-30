@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 30.79023766517639,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.986475621781171,
+          "ap": 0.42908641486022303,
+          "f1": 0.49445324881141045,
+          "f1_threshold": 0.9040841366754317,
+          "precision": 0.3619489559164733,
+          "recall": 0.78
+        },
+        "dot": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.986328125,
+          "ap": 0.42736298300550785,
+          "f1": 0.4968152866242039,
+          "f1_threshold": 0.904296875,
+          "precision": 0.3644859813084112,
+          "recall": 0.78
+        },
+        "euclidean": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.1643577948046539,
+          "ap": 0.4291398924758877,
+          "f1": 0.49445324881141045,
+          "f1_threshold": 0.43802655595315243,
+          "precision": 0.3619489559164733,
+          "recall": 0.78
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.4291943904111571,
+        "manhattan": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 5.080855339765549,
+          "ap": 0.4291943904111571,
+          "f1": 0.4951768488745981,
+          "f1_threshold": 13.227814257144928,
+          "precision": 0.36492890995260663,
+          "recall": 0.77
+        },
+        "max": {
+          "accuracy": 0.808,
+          "ap": 0.4291943904111571,
+          "f1": 0.4968152866242039
+        },
+        "similarity": {
+          "accuracy": 0.808,
+          "accuracy_threshold": 0.986475621781171,
+          "ap": 0.42908641486022303,
+          "f1": 0.49445324881141045,
+          "f1_threshold": 0.9040841366754317,
+          "precision": 0.3619489559164733,
+          "recall": 0.78
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}

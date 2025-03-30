@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 29.179883241653442,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.81,
+          "accuracy_threshold": 0.9104182777466123,
+          "ap": 0.4429589519524253,
+          "f1": 0.49617151607963245,
+          "f1_threshold": 0.7912560625628358,
+          "precision": 0.3576158940397351,
+          "recall": 0.81
+        },
+        "dot": {
+          "accuracy": 0.81,
+          "accuracy_threshold": 0.9104183132426711,
+          "ap": 0.4429589519524253,
+          "f1": 0.49617151607963245,
+          "f1_threshold": 0.7912560567446697,
+          "precision": 0.3576158940397351,
+          "recall": 0.81
+        },
+        "euclidean": {
+          "accuracy": 0.81,
+          "accuracy_threshold": 0.42327687554870175,
+          "ap": 0.4429589519524253,
+          "f1": 0.49617151607963245,
+          "f1_threshold": 0.6461330049223506,
+          "precision": 0.3576158940397351,
+          "recall": 0.81
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.4429589519524253,
+        "manhattan": {
+          "accuracy": 0.809,
+          "accuracy_threshold": 13.115259793685851,
+          "ap": 0.4428341144292939,
+          "f1": 0.498371335504886,
+          "f1_threshold": 19.571193609134525,
+          "precision": 0.3695652173913043,
+          "recall": 0.765
+        },
+        "max": {
+          "accuracy": 0.81,
+          "ap": 0.4429589519524253,
+          "f1": 0.498371335504886
+        },
+        "similarity": {
+          "accuracy": 0.81,
+          "accuracy_threshold": 0.9104182777466123,
+          "ap": 0.4429589519524253,
+          "f1": 0.49617151607963245,
+          "f1_threshold": 0.7912560625628358,
+          "precision": 0.3576158940397351,
+          "recall": 0.81
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}

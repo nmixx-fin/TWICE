@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 16.38472056388855,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.9845530263959698,
+          "ap": 0.39423607187556675,
+          "f1": 0.41262135922330095,
+          "f1_threshold": 0.9327429882041621,
+          "precision": 0.2724358974358974,
+          "recall": 0.85
+        },
+        "dot": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.98486328125,
+          "ap": 0.3924082255552681,
+          "f1": 0.41404358353510895,
+          "f1_threshold": 0.9326171875,
+          "precision": 0.2731629392971246,
+          "recall": 0.855
+        },
+        "euclidean": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.17580058886136168,
+          "ap": 0.3941659292354585,
+          "f1": 0.41262135922330095,
+          "f1_threshold": 0.3668136177376774,
+          "precision": 0.2724358974358974,
+          "recall": 0.85
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.4098927746427059,
+        "manhattan": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 8.711925327777863,
+          "ap": 0.4098927746427059,
+          "f1": 0.4305555555555556,
+          "f1_threshold": 16.99277213215828,
+          "precision": 0.2980769230769231,
+          "recall": 0.775
+        },
+        "max": {
+          "accuracy": 0.814,
+          "ap": 0.4098927746427059,
+          "f1": 0.4305555555555556
+        },
+        "similarity": {
+          "accuracy": 0.814,
+          "accuracy_threshold": 0.9845530263959698,
+          "ap": 0.39423607187556675,
+          "f1": 0.41262135922330095,
+          "f1_threshold": 0.9327429882041621,
+          "precision": 0.2724358974358974,
+          "recall": 0.85
+        }
+      }
+    ]
+  },
+  "task_name": "KorHeadlineACPairClassification"
+}

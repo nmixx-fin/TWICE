@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 6.099579095840454,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "test": [
+      {
+        "cosine": {
+          "accuracy": 0.7254632807137955,
+          "accuracy_threshold": 0.4384437147914913,
+          "ap": 0.7510269970583838,
+          "f1": 0.8408656906429025,
+          "f1_threshold": 0.4384437147914913,
+          "precision": 0.7254255903349808,
+          "recall": 1.0
+        },
+        "dot": {
+          "accuracy": 0.7254632807137955,
+          "accuracy_threshold": 0.438232421875,
+          "ap": 0.75088571038986,
+          "f1": 0.8408656906429025,
+          "f1_threshold": 0.438232421875,
+          "precision": 0.7254255903349808,
+          "recall": 1.0
+        },
+        "euclidean": {
+          "accuracy": 0.7254632807137955,
+          "accuracy_threshold": 1.0595324271730036,
+          "ap": 0.7510315439150269,
+          "f1": 0.8408656906429025,
+          "f1_threshold": 1.0595324271730036,
+          "precision": 0.7254255903349808,
+          "recall": 1.0
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.7513518191823261,
+        "manhattan": {
+          "accuracy": 0.7254632807137955,
+          "accuracy_threshold": 27.065794467926025,
+          "ap": 0.7513518191823261,
+          "f1": 0.8408656906429025,
+          "f1_threshold": 27.065794467926025,
+          "precision": 0.7254255903349808,
+          "recall": 1.0
+        },
+        "max": {
+          "accuracy": 0.7254632807137955,
+          "ap": 0.7513518191823261,
+          "f1": 0.8408656906429025
+        },
+        "similarity": {
+          "accuracy": 0.7254632807137955,
+          "accuracy_threshold": 0.4384437147914913,
+          "ap": 0.7510269970583838,
+          "f1": 0.8408656906429025,
+          "f1_threshold": 0.4384437147914913,
+          "precision": 0.7254255903349808,
+          "recall": 1.0
+        }
+      }
+    ]
+  },
+  "task_name": "HeadlineACPairClassification"
+}

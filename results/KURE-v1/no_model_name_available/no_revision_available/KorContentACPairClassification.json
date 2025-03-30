@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 2015.3972313404083,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.895,
+          "accuracy_threshold": 0.9663335152995055,
+          "ap": 0.774942322594208,
+          "f1": 0.7229551451187336,
+          "f1_threshold": 0.9586680769509932,
+          "precision": 0.7653631284916201,
+          "recall": 0.685
+        },
+        "dot": {
+          "accuracy": 0.896,
+          "accuracy_threshold": 0.9658203125,
+          "ap": 0.7735351795636275,
+          "f1": 0.7248677248677248,
+          "f1_threshold": 0.95849609375,
+          "precision": 0.7696629213483146,
+          "recall": 0.685
+        },
+        "euclidean": {
+          "accuracy": 0.895,
+          "accuracy_threshold": 0.2594945227384716,
+          "ap": 0.7749053644744136,
+          "f1": 0.7229551451187336,
+          "f1_threshold": 0.28748098828540775,
+          "precision": 0.7653631284916201,
+          "recall": 0.685
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.774942322594208,
+        "manhattan": {
+          "accuracy": 0.895,
+          "accuracy_threshold": 6.62403279542923,
+          "ap": 0.7741941870330703,
+          "f1": 0.722077922077922,
+          "f1_threshold": 7.3921507596969604,
+          "precision": 0.7513513513513513,
+          "recall": 0.695
+        },
+        "max": {
+          "accuracy": 0.896,
+          "ap": 0.774942322594208,
+          "f1": 0.7248677248677248
+        },
+        "similarity": {
+          "accuracy": 0.895,
+          "accuracy_threshold": 0.9663335152995055,
+          "ap": 0.774942322594208,
+          "f1": 0.7229551451187336,
+          "f1_threshold": 0.9586680769509932,
+          "precision": 0.7653631284916201,
+          "recall": 0.685
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 27.350842475891113,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "test": [
+      {
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.37176533189033184,
+        "map": 0.37176533189033184,
+        "mrr": 0.36612896825396823,
+        "nAUC_map_diff1": 0.3840906191022032,
+        "nAUC_map_max": -0.20516553775827062,
+        "nAUC_map_std": 0.06315198219143557,
+        "nAUC_mrr_diff1": 0.37749239677174384,
+        "nAUC_mrr_max": -0.2010924269135611,
+        "nAUC_mrr_std": 0.0652808101602981
+      }
+    ]
+  },
+  "task_name": "FiQA2018Reranking"
+}
