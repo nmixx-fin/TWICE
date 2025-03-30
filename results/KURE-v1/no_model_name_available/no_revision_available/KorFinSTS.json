@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 2.503525972366333,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine_pearson": -0.053499574400236026,
+        "cosine_spearman": -0.04152357805018821,
+        "euclidean_pearson": -0.05292492183387207,
+        "euclidean_spearman": -0.041607070499350786,
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": -0.04152357805018821,
+        "manhattan_pearson": -0.0505055682907071,
+        "manhattan_spearman": -0.04032685294552462,
+        "pearson": -0.053499574400236026,
+        "spearman": -0.04152357805018821
+      }
+    ]
+  },
+  "task_name": "KorFinSTS"
+}
