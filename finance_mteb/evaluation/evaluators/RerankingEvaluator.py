@@ -393,6 +393,12 @@ class RerankingEvaluator(Evaluator):
         if not docs_emb.shape[0]:
             return {"empty-docid": 0}
 
+        # Convert to float32 if needed
+        if isinstance(query_emb, np.ndarray):
+            query_emb = torch.from_numpy(query_emb).float()
+        if isinstance(docs_emb, np.ndarray):
+            docs_emb = torch.from_numpy(docs_emb).float()
+
         pred_scores = self.similarity_fct(query_emb, docs_emb)
         if len(pred_scores.shape) > 1:
             pred_scores = torch.amax(pred_scores, dim=0)
@@ -453,6 +459,12 @@ class RerankingEvaluator(Evaluator):
         Returns:
             sim_scores: Query-documents similarity scores, with shape `(num_pos+num_neg,)`
         """
+        # Convert to float32 if needed
+        if isinstance(query_emb, np.ndarray):
+            query_emb = torch.from_numpy(query_emb).float()
+        if isinstance(docs_emb, np.ndarray):
+            docs_emb = torch.from_numpy(docs_emb).float()
+            
         sim_scores = self.similarity_fct(query_emb, docs_emb)
         if len(sim_scores.shape) > 1:
             sim_scores = torch.amax(sim_scores, dim=0)
