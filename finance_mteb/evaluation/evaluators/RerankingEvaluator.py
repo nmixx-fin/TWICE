@@ -399,9 +399,23 @@ class RerankingEvaluator(Evaluator):
         if isinstance(docs_emb, np.ndarray):
             docs_emb = torch.from_numpy(docs_emb).float()
 
+        # Handle NaN values
+        if torch.isnan(query_emb).any() or torch.isnan(docs_emb).any():
+            # Replace NaN with zeros
+            query_emb = torch.nan_to_num(query_emb, nan=0.0)
+            docs_emb = torch.nan_to_num(docs_emb, nan=0.0)
+            
+        # Normalize embeddings
+        query_emb = torch.nn.functional.normalize(query_emb, dim=-1)
+        docs_emb = torch.nn.functional.normalize(docs_emb, dim=-1)
+
         pred_scores = self.similarity_fct(query_emb, docs_emb)
         if len(pred_scores.shape) > 1:
             pred_scores = torch.amax(pred_scores, dim=0)
+            
+        # Handle NaN in similarity scores
+        if torch.isnan(pred_scores).any():
+            pred_scores = torch.nan_to_num(pred_scores, nan=0.0)
 
         return {
             str(i): score.detach().numpy().item() for i, score in enumerate(pred_scores)
@@ -465,9 +479,23 @@ class RerankingEvaluator(Evaluator):
         if isinstance(docs_emb, np.ndarray):
             docs_emb = torch.from_numpy(docs_emb).float()
             
+        # Handle NaN values
+        if torch.isnan(query_emb).any() or torch.isnan(docs_emb).any():
+            # Replace NaN with zeros
+            query_emb = torch.nan_to_num(query_emb, nan=0.0)
+            docs_emb = torch.nan_to_num(docs_emb, nan=0.0)
+            
+        # Normalize embeddings
+        query_emb = torch.nn.functional.normalize(query_emb, dim=-1)
+        docs_emb = torch.nn.functional.normalize(docs_emb, dim=-1)
+            
         sim_scores = self.similarity_fct(query_emb, docs_emb)
         if len(sim_scores.shape) > 1:
             sim_scores = torch.amax(sim_scores, dim=0)
+            
+        # Handle NaN in similarity scores
+        if torch.isnan(sim_scores).any():
+            sim_scores = torch.nan_to_num(sim_scores, nan=0.0)
 
         return sim_scores
 
