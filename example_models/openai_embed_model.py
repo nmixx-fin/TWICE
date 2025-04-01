@@ -5,6 +5,7 @@ import pathlib
 import openai
 import tiktoken
 from dotenv import load_dotenv
+import numpy as np
 
 load_dotenv(verbose=True)
 
@@ -62,7 +63,8 @@ class OpenAIEmbedder:
                 in batch]
             
             out = [datum.embedding for datum in self.client.embeddings.create(input=batch, model=self.engine).data]
-
+            # Convert embeddings to float32
+            out = [np.array(embedding, dtype=np.float32) for embedding in out]
             fin_embeddings.extend(out)
 
         assert len(sentences) == len(fin_embeddings)
