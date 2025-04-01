@@ -20,6 +20,20 @@ class OpenAIEmbedder:
         self.tokenizer = tiktoken.get_encoding('cl100k_base')
         self.task_name = task_name
         self.client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        
+        # Add model_card_data for metadata extraction
+        self.model_card_data = {
+            "name": engine,
+            "revision": None,
+            "n_parameters": None,
+            "memory_usage": None,
+            "max_tokens": self.max_token_len,
+            "embed_dim": 1536,  # OpenAI embeddings dimension
+            "license": "proprietary",
+            "open_source": False,
+            "similarity_fn_name": "cosine",
+            "framework": ["openai"]
+        }
 
         pathlib.Path(self.base_path).mkdir(parents=True, exist_ok=True)
     
