@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 1073.4516925811768,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "test": [
+      {
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.09090909090909091,
+        "map": 0.09090909090909091,
+        "mrr": 1.0,
+        "nAUC_map_diff1": NaN,
+        "nAUC_map_max": NaN,
+        "nAUC_map_std": NaN,
+        "nAUC_mrr_diff1": NaN,
+        "nAUC_mrr_max": NaN,
+        "nAUC_mrr_std": NaN
+      }
+    ]
+  },
+  "task_name": "KorFiQA2018Reranking"
+}
