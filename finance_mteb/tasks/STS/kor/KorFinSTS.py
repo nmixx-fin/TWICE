@@ -35,15 +35,18 @@ class KorFinSTS(AbsTaskSTS):
             
         self.dataset = self.dataset.map(validate_example)
         
-        # score 값들의 고유값 확인
-        unique_scores = np.unique(self.dataset['score'])
+        # score 값들의 고유값 확인 (train split에서)
+        unique_scores = np.unique(self.dataset['train']['score'])
         
         # 0과 1만 있는지 확인 (float나 int 모두 고려)
         is_binary = all(np.isclose(score, 0) or np.isclose(score, 1) for score in unique_scores)
         
         if is_binary:
             # 이진 분류인 경우 int로 변환
-            self.dataset = self.dataset.map(lambda x: {**x, 'score': int(x['score'])}, remove_columns=['score'])
+            def convert_score(example):
+                example['score'] = int(example['score'])
+                return example
+            self.dataset['train'] = self.dataset['train'].map(convert_score)
             self.is_binary = True
         else:
             # 이진 분류가 아닌 경우 float 유지
