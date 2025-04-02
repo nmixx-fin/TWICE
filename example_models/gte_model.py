@@ -16,6 +16,14 @@ class GTERESModel:
             batch_size: int = 1,
     ) -> None:
 
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif is_torch_npu_available():
+            self.device = torch.device("npu")
+        else:
+            self.device = torch.device("cpu")
+        
+        print('## current device :', self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
         self.model = AutoModel.from_pretrained(model_name_or_path,
                                                torch_dtype = torch.float16,
@@ -23,19 +31,13 @@ class GTERESModel:
                                                trust_remote_code=True,
                                                cache_dir="./cache")
         
+        self.model = self.model.to(self.device)
+        
         self.query_instruction_for_retrieval = query_instruction_for_retrieval
         print("##",self.query_instruction_for_retrieval)
         self.normalize_embeddings = normalize_embeddings
         self.pooling_method = pooling_method
         self.batch_size = batch_size
-
-        if torch.cuda.is_available():
-            self.device = torch.device("cuda")
-        elif is_torch_npu_available():
-            self.device = torch.device("npu")
-        else:
-            self.device = torch.device("cpu")
-        self.model = self.model.to(self.device)
 
         num_gpus = torch.cuda.device_count()
         if num_gpus > 1:
