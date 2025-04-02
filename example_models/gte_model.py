@@ -19,6 +19,7 @@ class GTERESModel:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
         self.model = AutoModel.from_pretrained(model_name_or_path,
                                                torch_dtype = torch.float16,
+                                               attn_implementation="flash_attention_2",
                                                trust_remote_code=True,
                                                cache_dir="./cache")
         
