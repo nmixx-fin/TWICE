@@ -46,11 +46,11 @@ TASK_LIST_RERANKING = [
 ]
 
 TASK_LIST_STS = [
-    # "FinSTS",
+    # "FinSTS"
     "KorFinSTS",
-    "KorDartReportSTS",
-    "KorFinLawSTS",
-    "KorFinReportSTS",
+    # "KorDartReportSTS",
+    # "KorFinLawSTS",
+    # "KorFinReportSTS",
 ]
 
 TASK_LIST_PAIRCLASSIFICATION = [

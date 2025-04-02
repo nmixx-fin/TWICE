@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "09e270b1afe87a65dd41c6292e3c8905220bc290",
+  "evaluation_time": 6.1041364669799805,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "test": [
+      {
+        "cosine_pearson": 0.2719411298670952,
+        "cosine_spearman": 0.26771799960438425,
+        "euclidean_pearson": 0.2715846672067879,
+        "euclidean_spearman": 0.26761606033751917,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "main_score": 0.26771799960438425,
+        "manhattan_pearson": 0.26276553778389217,
+        "manhattan_spearman": 0.2570653462169847,
+        "pearson": 0.2719411298670952,
+        "spearman": 0.26771799960438425
+      }
+    ]
+  },
+  "task_name": "FinSTS"
+}
