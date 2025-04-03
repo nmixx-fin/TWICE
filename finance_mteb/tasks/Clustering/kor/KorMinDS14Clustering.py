@@ -35,7 +35,7 @@ class KorMInDS14Clustering(AbsTaskClustering):
         # 데이터 형식 확인 및 디버깅
         print("Dataset columns:", self.dataset.columns)
         print("Sample sentences type:", type(self.dataset['sentences'].iloc[0]))
-        # print("Sample sentences value:", self.dataset['sentences'].iloc[0])
+        print("Sample sentences value:", self.dataset['sentences'].iloc[0])
         
         # 문자열로 저장된 리스트를 실제 리스트로 변환
         try:
