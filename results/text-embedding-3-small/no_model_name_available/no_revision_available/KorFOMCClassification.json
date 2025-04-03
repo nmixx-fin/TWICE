@@ -1,0 +1,73 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 27.692142724990845,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "accuracy": 0.5162,
+        "f1": 0.44035633581711087,
+        "f1_weighted": 0.5458208444616645,
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.5162,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.568,
+            "f1": 0.4783738355237374,
+            "f1_weighted": 0.597758760621737
+          },
+          {
+            "accuracy": 0.56,
+            "f1": 0.463031305028498,
+            "f1_weighted": 0.5867021048647529
+          },
+          {
+            "accuracy": 0.423,
+            "f1": 0.3810710011567014,
+            "f1_weighted": 0.45483721311279945
+          },
+          {
+            "accuracy": 0.472,
+            "f1": 0.40825721597036524,
+            "f1_weighted": 0.511167644246669
+          },
+          {
+            "accuracy": 0.518,
+            "f1": 0.4457856229546444,
+            "f1_weighted": 0.5478936745817441
+          },
+          {
+            "accuracy": 0.553,
+            "f1": 0.45976567382643857,
+            "f1_weighted": 0.5774802599895456
+          },
+          {
+            "accuracy": 0.517,
+            "f1": 0.43981495513564733,
+            "f1_weighted": 0.5504238399774394
+          },
+          {
+            "accuracy": 0.547,
+            "f1": 0.45207873544076316,
+            "f1_weighted": 0.5782430810470836
+          },
+          {
+            "accuracy": 0.483,
+            "f1": 0.40995546577463055,
+            "f1_weighted": 0.5122966629541886
+          },
+          {
+            "accuracy": 0.521,
+            "f1": 0.46542954735968284,
+            "f1_weighted": 0.5414052032206844
+          }
+        ]
+      }
+    ]
+  },
+  "task_name": "KorFOMCClassification"
+}

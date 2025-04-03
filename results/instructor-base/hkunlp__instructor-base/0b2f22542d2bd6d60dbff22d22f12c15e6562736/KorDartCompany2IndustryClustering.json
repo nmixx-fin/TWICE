@@ -1,0 +1,23 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 2.755112886428833,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "test": [
+      {
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.060342769859119474,
+        "v_measure": 0.060342769859119474,
+        "v_measure_std": 0.0,
+        "v_measures": [
+          0.060342769859119474
+        ]
+      }
+    ]
+  },
+  "task_name": "KorDartCompany2IndustryClustering"
+}

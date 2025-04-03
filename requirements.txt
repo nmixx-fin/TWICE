@@ -18,3 +18,4 @@ jieba
 nltk
 sentencepiece
 protobuf
+flash-attn

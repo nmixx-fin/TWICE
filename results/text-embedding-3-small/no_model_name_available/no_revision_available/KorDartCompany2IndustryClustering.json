@@ -1,6 +1,6 @@
 {
   "dataset_revision": "main",
-  "evaluation_time": 10.550694942474365,
+  "evaluation_time": 8.965500116348267,
   "kg_co2_emissions": null,
   "mteb_version": "1.12.49",
   "scores": {
@@ -10,11 +10,11 @@
         "languages": [
           "kor-Hang"
         ],
-        "main_score": 0.24556524844357802,
-        "v_measure": 0.24556524844357802,
+        "main_score": 0.24499345525165614,
+        "v_measure": 0.24499345525165614,
         "v_measure_std": 0.0,
         "v_measures": [
-          0.24556524844357802
+          0.24499345525165614
         ]
       }
     ]

@@ -1,8 +1,7 @@
 from __future__ import annotations
-
 from finance_mteb.abstasks.TaskMetadata import TaskMetadata
-
 from ....abstasks import AbsTaskSTS
+
 
 class KorFinSTS(AbsTaskSTS):
     metadata = TaskMetadata(
@@ -15,10 +14,11 @@ class KorFinSTS(AbsTaskSTS):
         },
         type="STS",
         category="s2s",
-        eval_splits=["train"],
+        eval_splits=["test"], 
         eval_langs=["kor-Hang"],
         main_score="cosine_spearman",
     )
+    
 
     @property
     def metadata_dict(self) -> dict[str, str]:
