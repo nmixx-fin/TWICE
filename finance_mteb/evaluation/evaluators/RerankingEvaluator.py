@@ -100,8 +100,8 @@ class RerankingEvaluator(Evaluator):
             all_query_embs = np.asarray(
                 encode_queries_func(
                     [sample["query"] for sample in self.samples],
-                    prompt_name=self.task_name,
                     batch_size=self.batch_size,
+                    prompt_name=self.task_name,
                 )
             )
         elif isinstance(self.samples[0]["query"], list):
@@ -112,8 +112,8 @@ class RerankingEvaluator(Evaluator):
             all_query_embs = self._encode_unique_texts(
                 all_query_flattened,
                 encode_queries_func,
-                prompt_name=self.task_name,
                 batch_size=self.batch_size,
+                prompt_name=self.task_name,
             )
         else:
             raise ValueError(
@@ -206,8 +206,8 @@ class RerankingEvaluator(Evaluator):
         all_docs_embs = self._encode_unique_texts(
             all_docs,
             encode_corpus_func,
-            prompt_name=self.task_name,
             batch_size=self.batch_size,
+            prompt_name=self.task_name,
         )
 
         # Compute scores and confidence scores
@@ -260,9 +260,9 @@ class RerankingEvaluator(Evaluator):
                 # .encoding interface requires List[str] as input
                 query = [query]
             query_emb = np.asarray(
-                encode_queries_func(query, batch_size=self.batch_size)
+                encode_queries_func(query, batch_size=self.batch_size, prompt_name=self.task_name)
             )
-            docs_emb = np.asarray(encode_corpus_func(docs, batch_size=self.batch_size))
+            docs_emb = np.asarray(encode_corpus_func(docs, batch_size=self.batch_size, prompt_name=self.task_name))
             self._apply_sim_scores(
                 query_emb,
                 docs_emb,
@@ -306,7 +306,7 @@ class RerankingEvaluator(Evaluator):
 
         all_docs_embs = np.asarray(
             encode_corpus_func(
-                all_docs, prompt_name=self.task_name, batch_size=self.batch_size
+                all_docs, batch_size=self.batch_size, prompt_name=self.task_name
             )
         )
 
@@ -348,10 +348,10 @@ class RerankingEvaluator(Evaluator):
             if isinstance(query, str):
                 # .encoding interface requires List[str] as input
                 query_emb = np.asarray(
-                    encode_queries_func([query], batch_size=self.batch_size)
+                    encode_queries_func([query], batch_size=self.batch_size, prompt_name=self.task_name)
                 )
                 docs_emb = np.asarray(
-                    encode_corpus_func(docs, batch_size=self.batch_size)
+                    encode_corpus_func(docs, batch_size=self.batch_size, prompt_name=self.task_name)
                 )
 
             fake_qid = str(i)
@@ -393,9 +393,29 @@ class RerankingEvaluator(Evaluator):
         if not docs_emb.shape[0]:
             return {"empty-docid": 0}
 
+        # Convert to float32 if needed
+        if isinstance(query_emb, np.ndarray):
+            query_emb = torch.from_numpy(query_emb).float()
+        if isinstance(docs_emb, np.ndarray):
+            docs_emb = torch.from_numpy(docs_emb).float()
+
+        # Handle NaN values
+        if torch.isnan(query_emb).any() or torch.isnan(docs_emb).any():
+            # Replace NaN with zeros
+            query_emb = torch.nan_to_num(query_emb, nan=0.0)
+            docs_emb = torch.nan_to_num(docs_emb, nan=0.0)
+            
+        # Normalize embeddings
+        query_emb = torch.nn.functional.normalize(query_emb, dim=-1)
+        docs_emb = torch.nn.functional.normalize(docs_emb, dim=-1)
+
         pred_scores = self.similarity_fct(query_emb, docs_emb)
         if len(pred_scores.shape) > 1:
             pred_scores = torch.amax(pred_scores, dim=0)
+            
+        # Handle NaN in similarity scores
+        if torch.isnan(pred_scores).any():
+            pred_scores = torch.nan_to_num(pred_scores, nan=0.0)
 
         return {
             str(i): score.detach().numpy().item() for i, score in enumerate(pred_scores)
@@ -422,8 +442,8 @@ class RerankingEvaluator(Evaluator):
     def _encode_unique_texts(
         all_texts: list[str],
         encode_fn: Callable,
-        prompt_name: str | None,
         batch_size: int,
+        prompt_name: str | None = None,
     ):
         index_map, all_unique_texts, all_texts_indexes = {}, [], []
         for text in all_texts:
@@ -436,7 +456,7 @@ class RerankingEvaluator(Evaluator):
             f"A total on {len(all_texts) - len(all_unique_texts)}/{len(all_texts)} duplicate texts were found during encoding. Only encoding unique text and duplicating embeddings across."
         )
         all_unique_texts_embs = np.asarray(
-            encode_fn(all_unique_texts, prompt_name=prompt_name, batch_size=batch_size)
+            encode_fn(all_unique_texts, batch_size=batch_size, prompt_name=prompt_name)
         )
         return all_unique_texts_embs[all_texts_indexes]
 
@@ -453,9 +473,29 @@ class RerankingEvaluator(Evaluator):
         Returns:
             sim_scores: Query-documents similarity scores, with shape `(num_pos+num_neg,)`
         """
+        # Convert to float32 if needed
+        if isinstance(query_emb, np.ndarray):
+            query_emb = torch.from_numpy(query_emb).float()
+        if isinstance(docs_emb, np.ndarray):
+            docs_emb = torch.from_numpy(docs_emb).float()
+            
+        # Handle NaN values
+        if torch.isnan(query_emb).any() or torch.isnan(docs_emb).any():
+            # Replace NaN with zeros
+            query_emb = torch.nan_to_num(query_emb, nan=0.0)
+            docs_emb = torch.nan_to_num(docs_emb, nan=0.0)
+            
+        # Normalize embeddings
+        query_emb = torch.nn.functional.normalize(query_emb, dim=-1)
+        docs_emb = torch.nn.functional.normalize(docs_emb, dim=-1)
+            
         sim_scores = self.similarity_fct(query_emb, docs_emb)
         if len(sim_scores.shape) > 1:
             sim_scores = torch.amax(sim_scores, dim=0)
+            
+        # Handle NaN in similarity scores
+        if torch.isnan(sim_scores).any():
+            sim_scores = torch.nan_to_num(sim_scores, nan=0.0)
 
         return sim_scores
 

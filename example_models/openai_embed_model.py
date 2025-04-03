@@ -5,6 +5,7 @@ import pathlib
 import openai
 import tiktoken
 from dotenv import load_dotenv
+import numpy as np
 
 load_dotenv(verbose=True)
 
@@ -20,6 +21,20 @@ class OpenAIEmbedder:
         self.tokenizer = tiktoken.get_encoding('cl100k_base')
         self.task_name = task_name
         self.client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        
+        # Add model_card_data for metadata extraction
+        self.model_card_data = {
+            "name": engine,
+            "revision": None,
+            "n_parameters": None,
+            "memory_usage": None,
+            "max_tokens": self.max_token_len,
+            "embed_dim": 1536,  # OpenAI embeddings dimension
+            "license": "proprietary",
+            "open_source": False,
+            "similarity_fn_name": "cosine",
+            "framework": ["openai"]
+        }
 
         pathlib.Path(self.base_path).mkdir(parents=True, exist_ok=True)
     
@@ -48,7 +63,8 @@ class OpenAIEmbedder:
                 in batch]
             
             out = [datum.embedding for datum in self.client.embeddings.create(input=batch, model=self.engine).data]
-
+            # Convert embeddings to float32
+            out = [np.array(embedding, dtype=np.float32) for embedding in out]
             fin_embeddings.extend(out)
 
         assert len(sentences) == len(fin_embeddings)

@@ -1,6 +1,6 @@
 {
   "dataset_revision": "main",
-  "evaluation_time": 1386.5410361289978,
+  "evaluation_time": 1533.8781509399414,
   "kg_co2_emissions": null,
   "mteb_version": "1.12.49",
   "scores": {
@@ -10,15 +10,15 @@
         "languages": [
           "kor-Hang"
         ],
-        "main_score": 0.5495761583068253,
-        "map": 0.5495761583068253,
-        "mrr": 0.5932189676623723,
-        "nAUC_map_diff1": 0.28707585085336257,
-        "nAUC_map_max": -0.21936743922717963,
-        "nAUC_map_std": -0.38291546637212304,
-        "nAUC_mrr_diff1": 0.1642016089681608,
-        "nAUC_mrr_max": -0.06204582947397456,
-        "nAUC_mrr_std": -0.18634200784496588
+        "main_score": 0.9448054234356077,
+        "map": 0.9448054234356077,
+        "mrr": 0.9448024382094916,
+        "nAUC_map_diff1": 0.6930149850053144,
+        "nAUC_map_max": 0.6035559136459726,
+        "nAUC_map_std": 0.384942423064143,
+        "nAUC_mrr_diff1": 0.6929465727549096,
+        "nAUC_mrr_max": 0.6035774987181779,
+        "nAUC_mrr_std": 0.3849759109194687
       }
     ]
   },

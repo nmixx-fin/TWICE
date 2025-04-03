@@ -9,7 +9,7 @@ from example_models.e5_mistral_model import E5DRESModel
 from finance_mteb import MTEB
 from sentence_transformers import SentenceTransformer
 from example_models.gte_model import GTERESModel
-from eval_instruction import task2instruction, kor_task2instruction
+from eval_instruction import kor_task2instruction
 
 TASK_LIST_CLASSIFICATION = [
     "KorFinSentClassification",
@@ -133,8 +133,8 @@ if __name__ == '__main__':
         RUNNING_TASK += TASK_LIST_RERANKING
     if args.task_type =="STS":
         RUNNING_TASK += TASK_LIST_STS
-    if args.task_type =="SUM":
-        RUNNING_TASK += TASK_LIST_STS
+    if args.task_type =="SUMM":
+        RUNNING_TASK += TASK_LIST_SUMMARIZATION
     if args.task_type =="PAIRCLASSIFICATION":
         RUNNING_TASK += TASK_LIST_PAIRCLASSIFICATION
 
@@ -145,6 +145,9 @@ if __name__ == '__main__':
             if hasattr(model, 'set_prompt'):
                 model.set_prompt(instruction)
                 logger.info(f'Setting Prompt: {instruction} For Task: {task}')
+            elif hasattr(model, 'query_instruction_for_retrieval'):
+                model.query_instruction_for_retrieval = instruction
+                logger.info(f'Setting Query Instruction: {instruction} For Task: {task}')
 
         evaluation = MTEB(tasks=[task])
         logger.info('Running evaluation for task: {}'.format(evaluation))
