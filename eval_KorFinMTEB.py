@@ -133,7 +133,7 @@ if __name__ == '__main__':
         RUNNING_TASK += TASK_LIST_RERANKING
     if args.task_type =="STS":
         RUNNING_TASK += TASK_LIST_STS
-    if args.task_type =="SUMM":
+    if args.task_type =="SUMMARIZATION":
         RUNNING_TASK += TASK_LIST_SUMMARIZATION
     if args.task_type =="PAIRCLASSIFICATION":
         RUNNING_TASK += TASK_LIST_PAIRCLASSIFICATION
