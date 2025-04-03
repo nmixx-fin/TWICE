@@ -35,7 +35,6 @@ class KorMInDS14Clustering(AbsTaskClustering):
         # 데이터 형식 확인 및 디버깅
         print("Dataset columns:", self.dataset.columns)
         print("Sample sentences type:", type(self.dataset['sentences'].iloc[0]))
-        print("Sample sentences value:", self.dataset['sentences'].iloc[0])
         
         # 문자열로 저장된 리스트를 실제 리스트로 변환
         try:
@@ -55,9 +54,36 @@ class KorMInDS14Clustering(AbsTaskClustering):
                 self.dataset['sentences'] = self.dataset['sentences'].apply(lambda x: [x] if isinstance(x, str) else x)
                 self.dataset['labels'] = self.dataset['labels'].apply(lambda x: [x] if isinstance(x, str) else x)
         
-        # 리스트 내부의 모든 항목이 문자열인지 확인
-        self.dataset['sentences'] = self.dataset['sentences'].apply(lambda x: [str(item) for item in x] if isinstance(x, list) else [str(x)])
-        self.dataset['labels'] = self.dataset['labels'].apply(lambda x: [str(item) for item in x] if isinstance(x, list) else [str(x)])
+        # 리스트가 아닌 경우 리스트로 변환하고, 리스트인 경우 그대로 사용
+        self.dataset['sentences'] = self.dataset['sentences'].apply(
+            lambda x: [str(x)] if not isinstance(x, list) else [str(item) for item in x]
+        )
+        self.dataset['labels'] = self.dataset['labels'].apply(
+            lambda x: [str(x)] if not isinstance(x, list) else [str(item) for item in x]
+        )
+        
+        # 빈 문자열 필터링 및 데이터 정리
+        def filter_empty_strings(row):
+            # 문장과 레이블 쌍에서 빈 문자열이 아닌 것만 선택
+            valid_pairs = [(s, l) for s, l in zip(row['sentences'], row['labels']) 
+                          if len(str(s).strip()) > 0]
+            
+            # 유효한 쌍이 있는 경우에만 처리
+            if valid_pairs:
+                sentences, labels = zip(*valid_pairs)
+                return pd.Series({'sentences': list(sentences), 'labels': list(labels)})
+            else:
+                # 유효한 쌍이 없는 경우 기본값 반환
+                return pd.Series({'sentences': [''], 'labels': ['unknown']})
+        
+        # 빈 문자열 필터링 적용
+        self.dataset = self.dataset.apply(filter_empty_strings, axis=1)
+        
+        # 빈 문자열이나 unknown 레이블만 있는 행 제거
+        self.dataset = self.dataset[
+            (self.dataset['sentences'].apply(lambda x: any(len(s.strip()) > 0 for s in x))) &
+            (self.dataset['labels'].apply(lambda x: any(l != 'unknown' for l in x)))
+        ]
         
         # DataFrame을 Hugging Face Dataset으로 변환
         dataset_hf = Dataset.from_pandas(self.dataset)
