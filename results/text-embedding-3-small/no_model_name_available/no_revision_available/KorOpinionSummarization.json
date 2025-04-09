@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 38.25918436050415,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine_pearson": 0.8795031143494574,
+        "cosine_spearman": 0.8533589505079189,
+        "euclidean_pearson": 0.8672982743881378,
+        "euclidean_spearman": 0.8533589505079189,
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.8533589505079189,
+        "manhattan_pearson": 0.8662630194879539,
+        "manhattan_spearman": 0.8529996052263827,
+        "pearson": 0.8795031143494574,
+        "spearman": 0.8533589505079189
+      }
+    ]
+  },
+  "task_name": "KorOpinionSummarization"
+}
