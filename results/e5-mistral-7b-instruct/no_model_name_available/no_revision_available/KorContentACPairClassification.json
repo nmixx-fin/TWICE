@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 17.311307191848755,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.842,
+          "accuracy_threshold": 0.98630926869128,
+          "ap": 0.5958766369607595,
+          "f1": 0.5694444444444444,
+          "f1_threshold": 0.9680260041500695,
+          "precision": 0.5301724137931034,
+          "recall": 0.615
+        },
+        "dot": {
+          "accuracy": 0.843,
+          "accuracy_threshold": 0.9833984375,
+          "ap": 0.5928084651584649,
+          "f1": 0.5734265734265734,
+          "f1_threshold": 0.96826171875,
+          "precision": 0.537117903930131,
+          "recall": 0.615
+        },
+        "euclidean": {
+          "accuracy": 0.842,
+          "accuracy_threshold": 0.16544822479794102,
+          "ap": 0.5958867995025853,
+          "f1": 0.5694444444444444,
+          "f1_threshold": 0.2528935010874429,
+          "precision": 0.5301724137931034,
+          "recall": 0.615
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.6093503254853044,
+        "manhattan": {
+          "accuracy": 0.844,
+          "accuracy_threshold": 10.233583062887192,
+          "ap": 0.6093503254853044,
+          "f1": 0.5806451612903226,
+          "f1_threshold": 12.644982129335403,
+          "precision": 0.5384615384615384,
+          "recall": 0.63
+        },
+        "max": {
+          "accuracy": 0.844,
+          "ap": 0.6093503254853044,
+          "f1": 0.5806451612903226
+        },
+        "similarity": {
+          "accuracy": 0.842,
+          "accuracy_threshold": 0.98630926869128,
+          "ap": 0.5958766369607595,
+          "f1": 0.5694444444444444,
+          "f1_threshold": 0.9680260041500695,
+          "precision": 0.5301724137931034,
+          "recall": 0.615
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 49.55694007873535,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine_pearson": 0.948354288254941,
+        "cosine_spearman": 0.8653676571614993,
+        "euclidean_pearson": 0.9397221153507179,
+        "euclidean_spearman": 0.8653607289548048,
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.8653676571614993,
+        "manhattan_pearson": 0.940629285186127,
+        "manhattan_spearman": 0.8655131495020812,
+        "pearson": 0.948354288254941,
+        "spearman": 0.8653676571614993
+      }
+    ]
+  },
+  "task_name": "KorFinanceNewsSummarization"
+}
