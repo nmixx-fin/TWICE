@@ -242,15 +242,31 @@ class AbsTaskRetrieval(AbsTask):
             logger.info(f"Number of original qrels: {len(qrels)}")
             
             if len(corpus) > 0:
-                first_doc_id = list(corpus)[0]
-                logger.info(f"First corpus document ID: {first_doc_id}")
-                logger.info(f"First corpus document content: {corpus[first_doc_id]}")
-                logger.info(f"First corpus document columns: {list(corpus[first_doc_id].keys())}")
+                try:
+                    first_doc_id = list(corpus)[0]
+                    logger.info(f"First corpus document ID: {first_doc_id}")
+                    if isinstance(first_doc_id, str) and not first_doc_id.isdigit():
+                        logger.info(f"First corpus document ID is not numeric: {first_doc_id}")
+                        # 문자열 ID에 직접 접근할 때 발생하는 오류 방지
+                        logger.info(f"First corpus document content: {corpus[0] if 0 in corpus else 'Cannot access first document directly'}")
+                    else:
+                        logger.info(f"First corpus document content: {corpus[first_doc_id]}")
+                        logger.info(f"First corpus document columns: {list(corpus[first_doc_id].keys())}")
+                except Exception as e:
+                    logger.warning(f"Error accessing first corpus document: {e}")
+                    logger.info("Trying to access corpus using iteration instead...")
+                    for i, doc in enumerate(corpus):
+                        if i == 0:
+                            logger.info(f"First corpus document through iteration: {doc}")
+                            break
             
             if len(queries) > 0:
-                first_query_id = list(queries)[0]
-                logger.info(f"First query ID: {first_query_id}")
-                logger.info(f"First query content: {queries[first_query_id]}")
+                try:
+                    first_query_id = list(queries)[0]
+                    logger.info(f"First query ID: {first_query_id}")
+                    logger.info(f"First query content: {queries[first_query_id]}")
+                except Exception as e:
+                    logger.warning(f"Error accessing first query: {e}")
             
             if len(qrels) > 0:
                 first_qrel_id = list(qrels)[0]

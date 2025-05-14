@@ -37,13 +37,13 @@ TASK_LIST_CLASSIFICATION = [
 
 TASK_LIST_RETRIEVAL = [
     #"TATQARetrieval",
-    # "KorTATQARetrieval",
     # "USNewsRetrieval",
-    # "KorNewsRetrieval",
     # "TheGoldmanEnRetrieval",
-    "KorBoKDictRetrieval",
+    # "KorBoKDictRetrieval",
     # "KorFSSDictRetrieval",
-    # "KorMarketReportRetrieval"
+    # "KorTATQARetrieval",
+    # "KorNewsRetrieval",
+    "KorMarketReportRetrieval"
 ]
 
 TASK_LIST_CLUSTERING = [
