@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 
 import json
@@ -141,7 +142,7 @@ class HFDataLoader:
             [
                 col
                 for col in corpus_ds.column_names
-                if col not in ["id", "text", "title"]
+                if col not in ["id", "text"]
             ]
         )
         self.corpus = corpus_ds
@@ -201,7 +202,7 @@ class AbsTaskRetrieval(AbsTask):
 
     self.corpus: dict[str, dict[str, str]]
         Semantically, it should contain dict[split_name, dict[sample_id, dict[str, str]]]
-        E.g. {"test": {"document_one": {"_id": "d1", "title": "title", "text": "text"}}}
+        E.g. {"test": {"document_one": {"_id": "d1", "text": "text"}}}
 
     self.queries: dict[str, dict[str, Union[str, List[str]]]]
         Semantically, it should contain dict[split_name, dict[sample_id, str]] or dict[split_name, dict[sample_id, List[str]]] for conversations
@@ -224,86 +225,24 @@ class AbsTaskRetrieval(AbsTask):
         hf_repo_qrels = (
             dataset_path + "-qrels" if "clarin-knext" in dataset_path else None
         )
-        logger.info(f"Loading data from dataset path: {dataset_path}")
-        logger.info(f"QRels path: {hf_repo_qrels}")
-        
         for split in kwargs.get("eval_splits", self.metadata_dict["eval_splits"]):
-            logger.info(f"Loading split: {split}")
             corpus, queries, qrels = HFDataLoader(
                 hf_repo=dataset_path,
                 hf_repo_qrels=hf_repo_qrels,
                 streaming=False,
                 keep_in_memory=False,
             ).load(split=split)
-            
-            # 디버깅을 위한 로깅 추가
-            logger.info(f"Number of original corpus documents: {len(corpus)}")
-            logger.info(f"Number of original queries: {len(queries)}")
-            logger.info(f"Number of original qrels: {len(qrels)}")
-            
-            if len(corpus) > 0:
-                try:
-                    first_doc_id = list(corpus)[0]
-                    logger.info(f"First corpus document ID: {first_doc_id}")
-                    if isinstance(first_doc_id, str) and not first_doc_id.isdigit():
-                        logger.info(f"First corpus document ID is not numeric: {first_doc_id}")
-                        # 문자열 ID에 직접 접근할 때 발생하는 오류 방지
-                        logger.info(f"First corpus document content: {corpus[0] if 0 in corpus else 'Cannot access first document directly'}")
-                    else:
-                        logger.info(f"First corpus document content: {corpus[first_doc_id]}")
-                        logger.info(f"First corpus document columns: {list(corpus[first_doc_id].keys())}")
-                except Exception as e:
-                    logger.warning(f"Error accessing first corpus document: {e}")
-                    logger.info("Trying to access corpus using iteration instead...")
-                    for i, doc in enumerate(corpus):
-                        if i == 0:
-                            logger.info(f"First corpus document through iteration: {doc}")
-                            break
-            
-            if len(queries) > 0:
-                try:
-                    first_query_id = list(queries)[0]
-                    logger.info(f"First query ID: {first_query_id}")
-                    logger.info(f"First query content: {queries[first_query_id]}")
-                except Exception as e:
-                    logger.warning(f"Error accessing first query: {e}")
-            
-            if len(qrels) > 0:
-                first_qrel_id = list(qrels)[0]
-                logger.info(f"First qrel ID: {first_qrel_id}")
-                logger.info(f"First qrel content: {qrels[first_qrel_id]}")
-                
-                # qrels 구조 검사
-                first_qrel_doc_ids = list(qrels[first_qrel_id].keys())
-                if len(first_qrel_doc_ids) > 0:
-                    logger.info(f"First qrel document IDs: {first_qrel_doc_ids[:5]}")
-                    logger.info(f"First qrel document scores: {[qrels[first_qrel_id][doc_id] for doc_id in first_qrel_doc_ids[:5]]}")
-            
             # Conversion from DataSet
             queries = {query["id"]: query["text"] for query in queries}
             corpus = {
-                doc["id"]: {"title": doc.get("title", ""), "text": doc["text"]}
+                doc["id"]: {"text": doc["text"]}
                 for doc in corpus
             }
-            
             self.corpus[split], self.queries[split], self.relevant_docs[split] = (
                 corpus,
                 queries,
                 qrels,
             )
-            
-            # 변환 후 디버깅을 위한 로깅 추가
-            logger.info(f"Number of processed corpus documents: {len(self.corpus[split])}")
-            logger.info(f"Number of processed queries: {len(self.queries[split])}")
-            logger.info(f"Number of processed qrels: {len(self.relevant_docs[split])}")
-            
-            # 데이터가 있는지 확인
-            if len(self.corpus[split]) == 0:
-                logger.error(f"No corpus documents found for split: {split}")
-            if len(self.queries[split]) == 0:
-                logger.error(f"No queries found for split: {split}")
-            if len(self.relevant_docs[split]) == 0:
-                logger.error(f"No qrels found for split: {split}")
 
         self.data_loaded = True
 
@@ -475,7 +414,8 @@ def calculate_length_and_count(relevant_docs, queries, corpus):
             doc = corpus.get(doc_id)
             if doc is None:
                 continue
-            doc_text = doc.get("title", "") + doc["text"]
+            doc_text = doc["text"]
             total_length += len(query) + len(doc_text)
             num_pairs += 1
     return total_length, num_pairs
+
