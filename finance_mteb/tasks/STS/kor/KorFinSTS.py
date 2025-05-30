@@ -14,7 +14,7 @@ class KorFinSTS(AbsTaskSTS):
         },
         type="STS",
         category="s2s",
-        eval_splits=["test"], 
+        eval_splits=["train"], 
         eval_langs=["kor-Hang"],
         main_score="cosine_spearman",
     )
@@ -26,3 +26,4 @@ class KorFinSTS(AbsTaskSTS):
         metadata_dict["min_score"] = 0
         metadata_dict["max_score"] = 1
         return metadata_dict
+
