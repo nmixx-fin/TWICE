@@ -1,5 +1,4 @@
 import os
-
 import logging
 import argparse
 from example_models.flag_dres_model import FlagDRESModel
@@ -10,6 +9,19 @@ from finance_mteb import MTEB
 from sentence_transformers import SentenceTransformer
 from example_models.gte_model import GTERESModel
 from eval_instruction import kor_task2instruction
+import sys
+from typing import List, Optional
+import numpy as np
+import torch
+
+# 로깅 설정 추가
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+# finance_mteb 관련 모듈의 로그 레벨을 INFO로 설정
+logging.getLogger('finance_mteb').setLevel(logging.INFO)
 
 TASK_LIST_CLASSIFICATION = [
     "KorFinSentClassification",
@@ -25,13 +37,13 @@ TASK_LIST_CLASSIFICATION = [
 
 TASK_LIST_RETRIEVAL = [
     #"TATQARetrieval",
-    "KorTATQARetrieval",
+    # "KorTATQARetrieval",
     # "USNewsRetrieval",
-    "KorNewsRetrieval",
+    # "KorNewsRetrieval",
     # "TheGoldmanEnRetrieval",
     "KorBoKDictRetrieval",
-    "KorFSSDictRetrieval",
-    "KorMarketReportRetrieval"
+    # "KorFSSDictRetrieval",
+    # "KorMarketReportRetrieval"
 ]
 
 TASK_LIST_CLUSTERING = [
