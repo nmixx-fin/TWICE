@@ -106,29 +106,34 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    if 'bge' in args.model_name_or_path and not 'icl' in args.model_name_or_path:
-        model = FlagDRESModel(model_name_or_path=args.model_name_or_path,
-                            query_instruction_for_retrieval=None,
-                            pooling_method='cls')
-    elif 'KURE' in args.model_name_or_path and not 'icl' in args.model_name_or_path:
-        model = FlagDRESModel(model_name_or_path=args.model_name_or_path,
-                            query_instruction_for_retrieval=None,
-                            pooling_method='cls')
-                            
-    elif 'icl' in args.model_name_or_path:
+    # bge-icl
+    if 'icl' in args.model_name_or_path:
         model = FLAGICLModel(model_name_or_path=args.model_name_or_path,
                             query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다..")
+    
+    # bge-m3, kure
+    elif any(keyword in args.model_name_or_path.lower() for keyword in ['bge', 'kure']) and not 'icl' in args.model_name_or_path:
+        model = FlagDRESModel(model_name_or_path=args.model_name_or_path,
+                            query_instruction_for_retrieval=None,
+                            pooling_method='cls')
+    
+    # openai
     elif 'text-embedding' in args.model_name_or_path:
         model = OpenAIEmbedder(engine=args.model_name_or_path)
 
-    elif 'gte' in args.model_name_or_path or 'stella' in args.model_name_or_path:
+    # qwen
+    elif 'gte' in args.model_name_or_path or 'stella' in args.model_name_or_path or 'qwen' in args.model_name_or_path:
         model = GTERESModel(model_name_or_path=args.model_name_or_path,
                             query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다.",
                             pooling_method="last")
-    elif 'e5-mistral' in args.model_name_or_path:
+    
+    # e5-mistral
+    elif 'e5-mistral' in args.model_name_or_path or 'nmixx-e5' in args.model_name_or_path:
         model = E5DRESModel(model_name_or_path=args.model_name_or_path,
                     query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다.",
                     pooling_method="last")
+    
+    # minilm, instructor
     else:
         model = SentenceTransformer(args.model_name_or_path, trust_remote_code=True)
         model.max_seq_length = 256
