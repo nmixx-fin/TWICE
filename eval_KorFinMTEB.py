@@ -32,18 +32,18 @@ TASK_LIST_CLASSIFICATION = [
     "KorFinMMLUClassification",
     "KorFinBQAClassification",
     "KorFinMCQAClassification",
-    "KorNewsBQAClassification"
+    "KorNewsBQAClassifcation"
 ]
 
 TASK_LIST_RETRIEVAL = [
-    #"TATQARetrieval",
-    # "KorTATQARetrieval",
+    # "TATQARetrieval",
     # "USNewsRetrieval",
-    # "KorNewsRetrieval",
     # "TheGoldmanEnRetrieval",
     "KorBoKDictRetrieval",
-    # "KorFSSDictRetrieval",
-    # "KorMarketReportRetrieval"
+    "KorFSSDictRetrieval",
+    "KorTATQARetrieval",
+    "KorNewsRetrieval",
+    "KorMarketReportRetrieval"
 ]
 
 TASK_LIST_CLUSTERING = [

@@ -31,7 +31,17 @@ def cos_sim(a, b):
 
     a_norm = torch.nn.functional.normalize(a, p=2, dim=1)
     b_norm = torch.nn.functional.normalize(b, p=2, dim=1)
-    return torch.mm(a_norm, b_norm.transpose(0, 1))
+    
+    try:
+        return torch.mm(a_norm, b_norm.transpose(0, 1))
+    except RuntimeError as e:
+        if "not implemented for 'Half'" in str(e):
+            # Float16(Half) 타입을 Float32로 변환
+            a_norm = a_norm.float()
+            b_norm = b_norm.float()
+            return torch.mm(a_norm, b_norm.transpose(0, 1))
+        else:
+            raise e
 
 
 def dot_score(a: torch.Tensor, b: torch.Tensor):
@@ -50,7 +60,16 @@ def dot_score(a: torch.Tensor, b: torch.Tensor):
     if len(b.shape) == 1:
         b = b.unsqueeze(0)
 
-    return torch.mm(a, b.transpose(0, 1))
+    try:
+        return torch.mm(a, b.transpose(0, 1))
+    except RuntimeError as e:
+        if "not implemented for 'Half'" in str(e):
+            # Float16(Half) 타입을 Float32로 변환
+            a = a.float()
+            b = b.float()
+            return torch.mm(a, b.transpose(0, 1))
+        else:
+            raise e
 
 
 # From https://github.com/beir-cellar/beir/blob/f062f038c4bfd19a8ca942a9910b1e0d218759d4/beir/retrieval/custom_metrics.py#L4

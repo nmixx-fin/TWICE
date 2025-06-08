@@ -18,4 +18,6 @@ jieba
 nltk
 sentencepiece
 protobuf
-flash-attn
+openai
+tiktoken
+pytrec-eval

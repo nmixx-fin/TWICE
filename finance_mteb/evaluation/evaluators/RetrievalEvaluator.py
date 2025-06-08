@@ -112,7 +112,7 @@ class DenseRetrievalExactSearch:
         logger.info("Sorting Corpus by document length (Longest first)...")
         corpus_ids = sorted(
             corpus,
-            key=lambda k: len((corpus[k].get("title") or "") + (corpus[k].get("text") or "")),
+            key=lambda k: len(corpus[k].get("text") or ""),
             reverse=True,
         )
         corpus = [corpus[cid] for cid in corpus_ids]
@@ -250,9 +250,7 @@ class DenseRetrievalExactSearch:
                 else query
             )
             for doc_id in top_n:
-                corpus_item = (
-                    corpus[doc_id].get("title", "") + " " + corpus[doc_id]["text"]
-                ).strip()
+                corpus_item = corpus[doc_id]["text"].strip()
                 pairs.append(
                     (
                         query,
@@ -383,16 +381,12 @@ class DRESModel:
 
         if isinstance(corpus, dict):
             sentences = [
-                (corpus["title"][i] + " " + corpus["text"][i]).strip()
-                if "title" in corpus
-                else corpus["text"][i].strip()
+                corpus["text"][i].strip()
                 for i in range(len(corpus["text"]))
             ]
         else:
             sentences = [
-                (doc["title"] + " " + doc["text"]).strip()
-                if "title" in doc and doc["text"] is not None
-                else doc["text"].strip()
+                doc["text"].strip()
                 for doc in corpus
             ]
 
@@ -520,34 +514,6 @@ class RetrievalEvaluator(Evaluator):
         k_values: List[int],
         ignore_identical_ids: bool = True,
     ) -> Tuple[Dict[str, float], dict[str, float], dict[str, float], dict[str, float]]:
-        # 로깅 추가
-        logger.info(f"Evaluation starting with {len(qrels)} qrels and {len(results)} results")
-        logger.info(f"k_values for evaluation: {k_values}")
-        
-        # qrels와 results 데이터 구조 확인
-        if len(qrels) > 0:
-            first_qrel_id = list(qrels.keys())[0]
-            logger.info(f"First qrel ID: {first_qrel_id}")
-            logger.info(f"First qrel content sample: {dict(list(qrels[first_qrel_id].items())[:5])}")
-        else:
-            logger.error("No qrels available for evaluation!")
-            
-        if len(results) > 0:
-            first_result_id = list(results.keys())[0]
-            logger.info(f"First result ID: {first_result_id}")
-            logger.info(f"First result content sample: {dict(list(results[first_result_id].items())[:5])}")
-        else:
-            logger.error("No results available for evaluation!")
-        
-        # qrels과 results의 ID 일치 확인
-        common_query_ids = set(qrels.keys()) & set(results.keys())
-        logger.info(f"Number of common query IDs between qrels and results: {len(common_query_ids)}")
-        
-        if len(common_query_ids) == 0:
-            logger.error("No common query IDs between qrels and results!")
-            logger.info(f"qrels query IDs (sample): {list(qrels.keys())[:5]}")
-            logger.info(f"results query IDs (sample): {list(results.keys())[:5]}")
-        
         if ignore_identical_ids:
             logger.info(
                 "For evaluation, we ignore identical query and document ids (default), please explicitly set ``ignore_identical_ids=False`` to ignore this."
@@ -558,7 +524,6 @@ class RetrievalEvaluator(Evaluator):
                     if qid == pid:
                         results[qid].pop(pid)
                         popped.append(pid)
-            logger.info(f"Removed {len(popped)} identical query-document IDs")
 
         all_ndcgs, all_aps, all_recalls, all_precisions = {}, {}, {}, {}
 
@@ -572,25 +537,11 @@ class RetrievalEvaluator(Evaluator):
         ndcg_string = "ndcg_cut." + ",".join([str(k) for k in k_values])
         recall_string = "recall." + ",".join([str(k) for k in k_values])
         precision_string = "P." + ",".join([str(k) for k in k_values])
-        
-        # pytrec_eval 호출 전에 로깅
-        logger.info(f"Calling pytrec_eval with evaluation metrics: {map_string}, {ndcg_string}, {recall_string}, {precision_string}")
-        
-        try:
-            evaluator = pytrec_eval.RelevanceEvaluator(
-                qrels, {map_string, ndcg_string, recall_string, precision_string}
-            )
-            scores = evaluator.evaluate(results)
-            logger.info(f"pytrec_eval returned scores for {len(scores)} queries")
-        except Exception as e:
-            logger.error(f"Error during pytrec_eval evaluation: {str(e)}")
-            # 오류가 발생한 경우 qrels과 results 데이터의 일부를 로깅하여 디버깅
-            import traceback
-            logger.error(traceback.format_exc())
-            # 빈 결과 반환
-            return {}, {}, {}, {}, {}
+        evaluator = pytrec_eval.RelevanceEvaluator(
+            qrels, {map_string, ndcg_string, recall_string, precision_string}
+        )
+        scores = evaluator.evaluate(results)
 
-        # 평가 결과 집계
         for query_id in scores.keys():
             for k in k_values:
                 all_ndcgs[f"NDCG@{k}"].append(scores[query_id]["ndcg_cut_" + str(k)])
@@ -606,22 +557,10 @@ class RetrievalEvaluator(Evaluator):
         )
 
         for k in k_values:
-            ndcg[f"NDCG@{k}"] = round(sum(ndcg[f"NDCG@{k}"]) / len(scores), 5) if scores else 0.0
-            _map[f"MAP@{k}"] = round(sum(_map[f"MAP@{k}"]) / len(scores), 5) if scores else 0.0
-            recall[f"Recall@{k}"] = round(sum(recall[f"Recall@{k}"]) / len(scores), 5) if scores else 0.0
-            precision[f"P@{k}"] = round(sum(precision[f"P@{k}"]) / len(scores), 5) if scores else 0.0
-
-        # 결과 요약 로깅
-        logger.info(f"Evaluation complete. Main metrics:")
-        for k in [1, 10, 100]:
-            if f"NDCG@{k}" in ndcg:
-                logger.info(f"NDCG@{k}: {ndcg[f'NDCG@{k}']}")
-            if f"MAP@{k}" in _map:
-                logger.info(f"MAP@{k}: {_map[f'MAP@{k}']}")
-            if f"Recall@{k}" in recall:
-                logger.info(f"Recall@{k}: {recall[f'Recall@{k}']}")
-            if f"P@{k}" in precision:
-                logger.info(f"P@{k}: {precision[f'P@{k}']}")
+            ndcg[f"NDCG@{k}"] = round(sum(ndcg[f"NDCG@{k}"]) / len(scores), 5)
+            _map[f"MAP@{k}"] = round(sum(_map[f"MAP@{k}"]) / len(scores), 5)
+            recall[f"Recall@{k}"] = round(sum(recall[f"Recall@{k}"]) / len(scores), 5)
+            precision[f"P@{k}"] = round(sum(precision[f"P@{k}"]) / len(scores), 5)
 
         naucs = RetrievalEvaluator.evaluate_abstention(
             results, {**all_ndcgs, **all_aps, **all_recalls, **all_precisions}
@@ -682,3 +621,4 @@ class RetrievalEvaluator(Evaluator):
                 naucs[f"nAUC_{metric_name}_{fct}"] = nAUC(conf_scores, scores)
 
         return naucs
+
