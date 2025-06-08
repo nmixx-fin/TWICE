@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 40.27745962142944,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.9580663442611694,
+          "ap": 0.4280203767930561,
+          "f1": 0.42436149312377214,
+          "f1_threshold": 0.879483699798584,
+          "precision": 0.34951456310679613,
+          "recall": 0.54
+        },
+        "dot": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.9580663442611694,
+          "ap": 0.427987697054494,
+          "f1": 0.42436149312377214,
+          "f1_threshold": 0.879483699798584,
+          "precision": 0.34951456310679613,
+          "recall": 0.54
+        },
+        "euclidean": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.2895975410938263,
+          "ap": 0.427987697054494,
+          "f1": 0.42436149312377214,
+          "f1_threshold": 0.4909505844116211,
+          "precision": 0.34951456310679613,
+          "recall": 0.54
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.4285510808828266,
+        "manhattan": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 8.879690170288086,
+          "ap": 0.4285510808828266,
+          "f1": 0.42344045368620037,
+          "f1_threshold": 15.528538703918457,
+          "precision": 0.3404255319148936,
+          "recall": 0.56
+        },
+        "max": {
+          "accuracy": 0.821,
+          "ap": 0.4285510808828266,
+          "f1": 0.42436149312377214
+        },
+        "similarity": {
+          "accuracy": 0.821,
+          "accuracy_threshold": 0.9580663442611694,
+          "ap": 0.4280203767930561,
+          "f1": 0.42436149312377214,
+          "f1_threshold": 0.879483699798584,
+          "precision": 0.34951456310679613,
+          "recall": 0.54
+        }
+      }
+    ]
+  },
+  "task_name": "KorContentACPairClassification"
+}

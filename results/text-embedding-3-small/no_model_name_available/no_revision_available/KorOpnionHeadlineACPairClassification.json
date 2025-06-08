@@ -1,0 +1,68 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 28.662928342819214,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine": {
+          "accuracy": 0.828,
+          "accuracy_threshold": 0.8733637928962708,
+          "ap": 0.5287466977450537,
+          "f1": 0.5189003436426116,
+          "f1_threshold": 0.7432256937026978,
+          "precision": 0.39528795811518325,
+          "recall": 0.755
+        },
+        "dot": {
+          "accuracy": 0.828,
+          "accuracy_threshold": 0.8733639121055603,
+          "ap": 0.5287466977450537,
+          "f1": 0.5189003436426116,
+          "f1_threshold": 0.7432256937026978,
+          "precision": 0.39528795811518325,
+          "recall": 0.755
+        },
+        "euclidean": {
+          "accuracy": 0.828,
+          "accuracy_threshold": 0.5032616257667542,
+          "ap": 0.5287466977450537,
+          "f1": 0.5189003436426116,
+          "f1_threshold": 0.7166229486465454,
+          "precision": 0.39528795811518325,
+          "recall": 0.755
+        },
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.5288417601538847,
+        "manhattan": {
+          "accuracy": 0.828,
+          "accuracy_threshold": 16.886947631835938,
+          "ap": 0.5288417601538847,
+          "f1": 0.5245901639344263,
+          "f1_threshold": 21.838558197021484,
+          "precision": 0.41260744985673353,
+          "recall": 0.72
+        },
+        "max": {
+          "accuracy": 0.828,
+          "ap": 0.5288417601538847,
+          "f1": 0.5245901639344263
+        },
+        "similarity": {
+          "accuracy": 0.828,
+          "accuracy_threshold": 0.8733637928962708,
+          "ap": 0.5287466977450537,
+          "f1": 0.5189003436426116,
+          "f1_threshold": 0.7432256937026978,
+          "precision": 0.39528795811518325,
+          "recall": 0.755
+        }
+      }
+    ]
+  },
+  "task_name": "KorOpnionHeadlineACPairClassification"
+}

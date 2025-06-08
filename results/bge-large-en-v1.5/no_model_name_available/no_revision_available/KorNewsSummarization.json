@@ -1,0 +1,26 @@
+{
+  "dataset_revision": "main",
+  "evaluation_time": 2.91125750541687,
+  "kg_co2_emissions": null,
+  "mteb_version": "1.12.49",
+  "scores": {
+    "train": [
+      {
+        "cosine_pearson": 0.5552373800363768,
+        "cosine_spearman": 0.5682099438328586,
+        "euclidean_pearson": 0.5737345719832315,
+        "euclidean_spearman": 0.5681683745926923,
+        "hf_subset": "default",
+        "languages": [
+          "kor-Hang"
+        ],
+        "main_score": 0.5682099438328586,
+        "manhattan_pearson": 0.5749999480314161,
+        "manhattan_spearman": 0.5696995082721502,
+        "pearson": 0.5552373800363768,
+        "spearman": 0.5682099438328586
+      }
+    ]
+  },
+  "task_name": "KorNewsSummarization"
+}

@@ -37,7 +37,7 @@ TASK_LIST_RETRIEVAL = [
 TASK_LIST_CLUSTERING = [
     # "WikiCompany2IndustryClustering",
     "KorDartCompany2IndustryClustering",
-    "KorMinDS14Clustering"
+    "KorMInDS14Clustering"
 ]
 
 TASK_LIST_RERANKING = [
@@ -61,11 +61,11 @@ TASK_LIST_PAIRCLASSIFICATION = [
 ]
 
 TASK_LIST_SUMMARIZATION = [
+    "KorFinanceColumnSummarization",
+    "KorFinanceNewsSummarization",
     "KorLawSummarization",
     "KorNewsSummarization",
     "KorOpinionSummarization",
-    "KorFinanceNewsSummarization",
-    "KorFinanceColumnSummarization"
 ] 
 
 def _setup_logger():
