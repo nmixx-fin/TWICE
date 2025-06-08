@@ -58,8 +58,8 @@ TASK_LIST_RERANKING = [
 ]
 
 TASK_LIST_STS = [
-    # "FinSTS"
     "KorFinSTS",
+    "FinSTS"
     # "KorDartReportSTS",
     # "KorFinLawSTS",
     # "KorFinReportSTS",
@@ -97,10 +97,10 @@ logger = _setup_logger()
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name_or_path', default="BAAI/bge-large-zh", type=str)
+    parser.add_argument('--model_name_or_path', default=None, type=str)
     parser.add_argument('--task_type', default=None, type=str)
     parser.add_argument('--add_instruction', action='store_true', help="whether to add instruction for query")
-    parser.add_argument('--pooling_method', default='cls', type=str) # model마다 pooling method
+    parser.add_argument('--pooling_method', default=None, type=str) # model마다 pooling method
 
     return parser.parse_args()
 
@@ -108,30 +108,35 @@ if __name__ == '__main__':
     args = get_args()
     # bge-icl
     if 'icl' in args.model_name_or_path:
+        print('## FLAGICLModel Selected ##')
         model = FLAGICLModel(model_name_or_path=args.model_name_or_path,
                             query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다..")
     
     # bge-m3, kure
     elif any(keyword in args.model_name_or_path.lower() for keyword in ['bge', 'kure']) and not 'icl' in args.model_name_or_path:
+        print('## FlagDRESModel Selected ##')
         model = FlagDRESModel(model_name_or_path=args.model_name_or_path,
                             query_instruction_for_retrieval=None,
-                            pooling_method='cls')
+                            pooling_method=args.pooling_method)
     
     # openai
     elif 'text-embedding' in args.model_name_or_path:
+        print('## OpenAIEmbedder Selected ##')
         model = OpenAIEmbedder(engine=args.model_name_or_path)
 
     # qwen
     elif 'gte' in args.model_name_or_path or 'stella' in args.model_name_or_path or 'qwen' in args.model_name_or_path:
+        print('## GTERESModel Selected ##')
         model = GTERESModel(model_name_or_path=args.model_name_or_path,
                             query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다.",
-                            pooling_method="last")
+                            pooling_method=args.pooling_method)
     
     # e5-mistral
     elif 'e5-mistral' in args.model_name_or_path or 'nmixx-e5' in args.model_name_or_path:
+        print('## E5DRESModel Selected ##')
         model = E5DRESModel(model_name_or_path=args.model_name_or_path,
                     query_instruction_for_retrieval="주어진 웹 검색 쿼리에 대해 관련된 문서를 검색하여 답을 제공합니다.",
-                    pooling_method="last")
+                    pooling_method=args.pooling_method)
     
     # minilm, instructor
     else:
@@ -162,7 +167,7 @@ if __name__ == '__main__':
             if hasattr(model, 'set_prompt'):
                 model.set_prompt(instruction)
                 logger.info(f'Setting Prompt: {instruction} For Task: {task}')
-            elif hasattr(model, 'query_instruction_for_retrieval'):
+            if hasattr(model, 'query_instruction_for_retrieval'):
                 model.query_instruction_for_retrieval = instruction
                 logger.info(f'Setting Query Instruction: {instruction} For Task: {task}')
 
