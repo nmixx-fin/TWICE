@@ -1,0 +1,1 @@
+{"name": "nmixx-fin/nmixx-minilm", "revision": "cc4a4c19a02713d6ca7a80fd9ae94ac9a975a9a6", "release_date": null, "languages": [], "n_parameters": null, "memory_usage": null, "max_tokens": null, "embed_dim": null, "license": null, "open_source": null, "similarity_fn_name": "cosine", "framework": ["Sentence Transformers"], "loader": null}
